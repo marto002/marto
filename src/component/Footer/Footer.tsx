@@ -51,11 +51,11 @@ export default function Footer() {
               <input
                 type="email"
                 placeholder="Email"
-                className="md:w-full w-[20rem] px-3 py-2 rounded-md text-black bg-white" />
+                className="w-full px-3 py-2 rounded-md text-black bg-white" />
               <input
                 type="text"
                 placeholder="Your Name"
-                className="md:w-full w-[20rem] px-3 py-2 rounded-md text-black bg-white" />
+                className="w-full  px-3 py-2 rounded-md text-black bg-white" />
               <button className="w-full border border-white py-2 rounded-md hover:bg-white hover:text-black transition">
                 Subscribe
               </button>

@@ -30,7 +30,7 @@ const Navbar = () => {
 
   return (
     <div className="fixed top-0 left-0 z-50 w-full bg-[#f8f8f8] font-nunito md:px-22 ">
-      <nav className="flex   w-full  justify-between ">
+      <nav className="flex md:px-0 px-5  w-full  justify-between ">
         {/* Logo */}
         <div className="flex   text-left  space-x-2 text-[#163546] pt-2">
           <Link href="/" className="flex items-center space-x-2">

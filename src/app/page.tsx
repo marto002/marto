@@ -9,9 +9,9 @@ import { FaTrophy } from "react-icons/fa";
 export default function Home() {
   const router = useRouter();
   return (
-   <div>
+   <div >
     
-  <section className="flex flex-col items-center justify-center w-full  mx-auto py-24 px-6 md:h-screen bg-white">
+  <section className="flex flex-col items-center justify-center w-full  mx-auto md:py-24 py-5 px-6 md:h-screen bg-white">
   <p className="text-[#000] text-3xl sm:text-4xl md:text-5xl text-center">Our Specialities</p>
   
   <div className="bg-red-700 my-4">
@@ -73,9 +73,9 @@ export default function Home() {
    
     <div className="bg-[#33accc] justify-center items-center p-5 rounded-full w-15 h-15"> <FaTrophy color="#fff" size={20}/></div>
    
-   <h1 className="text-[#000] text-5xl"> Always Delivering Best Of Our Services</h1>
+   <h1 className="text-[#000] md:text-5xl text-2xl "> Always Delivering Best Of Our Services</h1>
   
-<p className="text-black">To give real service you must add something which cannot be bought or measured with money, and that is sincerity and integrity.</p>
+<p className="text-black md:text-[17px] text-[14px]">To give real service you must add something which cannot be bought or measured with money, and that is sincerity and integrity.</p>
   </section>
 
 
@@ -105,9 +105,9 @@ export default function Home() {
    
     <div className="bg-[#33accc] justify-center items-center p-5 rounded-full w-15 h-15"> <BsEmojiSmile  color="#fff" size={20}/></div>
    
-   <h1 className="text-[#000] text-5xl">Making Our Customers Happy</h1>
+   <h1 className="text-[#000] md:text-5xl text-2xl">Making Our Customers Happy</h1>
   
-<p className="text-black">We see our customers as invited guests to a party, and we are the hosts. It’s our job every day to make every important aspect of the customer experience a little bit better</p>
+<p className="text-black text-[14px] md:text-[17px]">We see our customers as invited guests to a party, and we are the hosts. It’s our job every day to make every important aspect of the customer experience a little bit better</p>
   </section>
 
 {/*<div className="relative overflow-hidden ">

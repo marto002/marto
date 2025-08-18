@@ -110,11 +110,11 @@ export default function RootLayout({ children, isAboutPage }: FirstSectionProps)
 <Navbar/>
 
 {showLogoAndContent && (
-  <div className="relative h-[600px] "> 
+  <div className="relative md:h-[600px] h-[28rem] "> 
     <Slider ref={sliderRef} {...settings} className="fixed inset-0">
       {slides.map((item, index) => (
-        <div key={index} className="relative h-[600px]  "> 
-         <div className="sticky top-0 h-screen">
+        <div key={index} className="relative md:h-[600px] h-[28rem]  "> 
+         
           <Image
             src={item.image}
             alt="Background"
@@ -122,7 +122,7 @@ export default function RootLayout({ children, isAboutPage }: FirstSectionProps)
             className="object-cover "
             priority
           />
-          </div>
+        
           <div className="absolute inset-0 bg-gray-700 opacity-20"></div>
         </div>
       ))}
