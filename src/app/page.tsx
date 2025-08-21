@@ -11,10 +11,10 @@ export default function Home() {
   return (
    <div >
     
-  <section className="flex flex-col items-center justify-center w-full  mx-auto md:py-24 py-5 px-6 md:h-screen bg-white">
+  <section className="flex flex-col items-center justify-center w-full  mx-auto md:my-10 my-0 bg-white md:py-24 py-6 px-6 md:h-screen ">
   <p className="text-[#000] text-3xl sm:text-4xl md:text-5xl text-center">Our Specialities</p>
   
-  <div className="bg-red-700 my-4">
+  <div className=" justify-center items-center w-[15rem] py-3 flex ">
     <Horixontalrule />
   </div>
 
@@ -75,6 +75,9 @@ export default function Home() {
    
    <h1 className="text-[#000] md:text-5xl text-2xl "> Always Delivering Best Of Our Services</h1>
   
+  <div className=" justify-center items-center w-[15rem] py-3 flex ">
+    <Horixontalrule />
+  </div>
 <p className="text-black md:text-[17px] text-[14px]">To give real service you must add something which cannot be bought or measured with money, and that is sincerity and integrity.</p>
   </section>
 
@@ -107,6 +110,9 @@ export default function Home() {
    
    <h1 className="text-[#000] md:text-5xl text-2xl">Making Our Customers Happy</h1>
   
+  <div className=" justify-center items-center w-[15rem] py-3 flex ">
+    <Horixontalrule />
+  </div>
 <p className="text-black text-[14px] md:text-[17px]">We see our customers as invited guests to a party, and we are the hosts. It’s our job every day to make every important aspect of the customer experience a little bit better</p>
   </section>
 
