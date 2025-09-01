@@ -7,13 +7,13 @@ import { motion } from 'framer-motion';
 export default function Aboutimage() {
   return (
     <div>
-       <section className='pb-15'>
+       <section className='pb-15 bg-white'>
        <div className='grid grid-cols-1 gap-5 px-8  md:px-28'>
             
            <div className='grid md:grid-cols-[70%_30%] grid-cols-1 md:gap-0 gap-5'>
             {/*left */}
              <div className='grid md:grid-cols-2 grid-cols-1 md:gap-0 gap-5'>
-              <div className='flex flex-col gap-5 justify-center items-center md:w-[23.5rem] h-screen pb-10 p-1 border-[#ddd] border-1 '>
+              <div className='flex flex-col gap-5 justify-center items-center md:w-[23.5rem] bg-amber-700 h-screen pb-10  border-[#ddd] border-1 '>
                 <div className="w-full h-full overflow-hidden ">
     
                  <motion.div className="w-full h-full flex items-center justify-center mb-8 md:mb-0 "

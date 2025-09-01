@@ -113,6 +113,56 @@ export default function RootLayout({ children, isAboutPage }: FirstSectionProps)
         
 <Navbar/>
 
+
+{showLogoAndContent && (
+  <>
+   
+    <div className="fixed inset-0 z-[-1]">
+      <Slider ref={sliderRef} {...settings}>
+        {slides.map((item, index) => (
+          <div key={index} className="relative md:h-[38rem] h-90">
+            <Image
+              src={item.image}
+              alt="Background"
+              fill
+              className="object-cover"
+              priority
+            />
+            <div className="absolute inset-0 bg-gray-700 opacity-20"></div>
+          </div>
+        ))}
+      </Slider>
+    </div>
+
+  
+    <div>
+      <div className={pathname==="/"?" md:py-[150px] py-[2.7rem] flex flex-col items-center justify-center text-center px-4 md:mt-30":"md:py-[30px] py-[1.5rem] flex flex-col items-center justify-center text-center px-4 mt-30"}>
+        <Content text={contentText1}
+        text2={contentTex2}
+        text3={contentTex3}
+        pathname={pathname} />
+     
+      </div>
+
+      
+    </div>
+  </>
+)}
+
+
+     {children}
+     <Footer/>
+    
+      </body>
+    </html>
+  );
+}
+
+
+
+
+{/*
+
 {showLogoAndContent && (
   <div className={pathname==="/" ? "relative md:h-[600px] h-[21.2rem]":"relative md:h-[450px] h-[17.2rem]"}> 
     <Slider ref={sliderRef} {...settings} className="fixed inset-0">
@@ -147,44 +197,4 @@ export default function RootLayout({ children, isAboutPage }: FirstSectionProps)
 
 
 
-{/*
-{showLogoAndContent && (
-  <>
-   
-    <div className="fixed inset-0 z-[-1]">
-      <Slider ref={sliderRef} {...settings}>
-        {slides.map((item, index) => (
-          <div key={index} className="relative md:h-screen h-90">
-            <Image
-              src={item.image}
-              alt="Background"
-              fill
-              className="object-cover"
-              priority
-            />
-            <div className="absolute inset-0 bg-gray-700 opacity-20"></div>
-          </div>
-        ))}
-      </Slider>
-    </div>
-
-  
-    <div>
-      <div className="md:h-screen h-70 flex flex-col items-center justify-center text-center px-4 mt-30">
-        <Content text={contentText1} text2={contentTex2} />
-     
-      </div>
-
-      
-    </div>
-  </>
-)}*/}
-
-
-     {children}
-     <Footer/>
-    
-      </body>
-    </html>
-  );
-}
+*/}

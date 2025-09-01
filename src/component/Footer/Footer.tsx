@@ -4,6 +4,7 @@ import { useRouter } from "next/navigation";
 import {  FaFacebookF, FaGooglePlusG, FaLinkedinIn, FaTwitter } from "react-icons/fa";
 import { BsTwitterX } from "react-icons/bs";
 import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
+import Link from "next/link";
 
 
 export default function Footer() {
@@ -14,20 +15,20 @@ export default function Footer() {
     <div className="bg-[#212121] text-gray-200 py-10">
         <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8 px-6">
 
-          {/* More Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">More Info</h3>
-            <ul className="space-y-2">
+         
+          <div className="text-white font-normal">
+            <h3 className="text-[25px]  mb-4">More Info</h3>
+            <ul className="space-y-2 text-[14px]">
               <li><a href="#" className="hover:text-white">About Us</a></li>
               <li><a href="#" className="hover:text-white">Contact Us</a></li>
               <li><a href="#" className="hover:text-white">Privacy Policy</a></li>
             </ul>
           </div>
 
-          {/* Our Links */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Our Links</h3>
-            <ul className="space-y-2">
+      
+          <div className="text-white font-normal">
+            <h3 className="text-[25px]  mb-4">Our Links</h3>
+            <ul className="space-y-2 text-[14px]">
               <li><a href="#" className="hover:text-white ">Our Services</a></li>
               <li><a href="#" className="hover:text-white ">Our Work</a></li>
             </ul>
@@ -35,18 +36,20 @@ export default function Footer() {
           </div>
 
           {/* Contact Info */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Contact Info</h3>
-            <ul className="space-y-3">
-              <li className="flex items-center gap-2"><FiMapPin /> Airway Blvd, California City, CA 93505</li>
-              <li className="flex items-center gap-2"><FiPhone /> 815-575-8438 | 725-333-6078</li>
-              <li className="flex items-center gap-2 "><FiMail /> info@martocourierltd.com</li>
+          <div className="text-white font-normal">
+            <h3 className="text-[25px]  mb-4">Contact Info</h3>
+            <ul className="space-y-3 text-[15px]">
+              <li className="flex items-center gap-2"><FiMapPin size={30} /> Airway Blvd, California City, CA 93505</li>
+              <li className="flex items-center gap-2"><FiPhone size={30}/> 815-575-8438 | 725-333-6078</li>
+              <li className="flex items-center gap-2 "><FiMail size={30}/> 
+<Link href={"info@martocourierltd.com"}>
+info@martocourierltd.com</Link></li>
             </ul>
           </div>
 
           {/* Subscribe */}
-          <div>
-            <h3 className="text-lg font-semibold mb-4">Subscribe Us</h3>
+          <div className="text-white font-normal">
+            <h3 className="text-[25px]  mb-4">Subscribe Us</h3>
             <form className="space-y-3 flex flex-col">
               <input
                 type="email"
@@ -61,10 +64,10 @@ export default function Footer() {
               </button>
             </form>
             <div className="flex gap-3 mt-4">
-              <a href="#" className="bg-blue-600 p-2 rounded-full"><FaFacebookF /></a>
-              <a href="#" className="bg-sky-500 p-2 rounded-full"><FaTwitter /></a>
-              <a href="#" className="bg-orange-600 p-2 rounded-full"><FaLinkedinIn /></a>
-              <a href="#" className="bg-red-600 p-2 rounded-full"><FaGooglePlusG /></a>
+              <a href="#" className="bg-blue-600 p-2 rounded-full w-[40px] h-[40px] justify-center items-center flex"><FaFacebookF /></a>
+              <a href="#" className="bg-sky-500 p-2 rounded-full w-[40px] h-[40px] justify-center items-center flex"><FaTwitter /></a>
+              <a href="#" className="bg-orange-600 p-2 rounded-full w-[40px] h-[40px] justify-center items-center flex"><FaLinkedinIn /></a>
+              <a href="#" className="bg-red-600 p-2 rounded-full w-[40px] h-[40px] justify-center items-center flex"><FaGooglePlusG /></a>
             </div>
           </div>
         </div>

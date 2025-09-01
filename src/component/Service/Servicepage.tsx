@@ -5,11 +5,11 @@ import Image from "next/image";
 
 export default function Servicepage() {
   return (
-    <div>
+    <div className="bg-white">
       <section className="flex flex-col items-center justify-center w-full  mx-auto md:my-0 my-0 bg-white md:py-15 py-6 md:px-30 px-6  ">
-        <div className="bg-[#33accc] justify-center items-center p-5 rounded-full w-15 h-15">
+        <div className="bg-[#33accc]  justify-center items-center p-5 rounded-full flex md:w-[70px] w-[50px] md:h-[70px] h-[50px]">
           
-          <FaBraille color="#fff" size={20} />
+          <FaBraille color="#fff" size={30} />
         </div>
 
         <h1 className="text-[#000] md:text-5xl text-19 whitespace-nowrap">
@@ -24,8 +24,8 @@ export default function Servicepage() {
           Internatonal Limited.
         </p>
       </section>
-      <section className="md:px-35 p-5 justify-center  items-center flex flex-col ">
-        <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-4 gap-15 ">
+      <section className="md:px-35 p-5 justify-center  items-center flex flex-col bg-white">
+        <div className="grid md:grid-cols-2 grid-cols-1 lg:grid-cols-4 md:gap-15 gap-10 ">
           <div className="flex flex-col gap-5 justify-center text-center items-center">
             <div className="relative inline-block group ">
               <Image
@@ -61,11 +61,11 @@ export default function Servicepage() {
                 </div>
               </div>
             </div>
-            <div className=" md:h-80 h-40">
-              <h1 className="text-black font-normal text-lg">
+            <div className=" md:h-80 h-30">
+              <h1 className="text-black font-normal md:text-[18px] text-[16px] ">
                 Best In Delivery
               </h1>
-              <p className="text-[#999] font-normal text-base">
+              <p className="text-[#999] font-normal text-[14px]">
                 International express deliveries; global freight forwarding by
                 air, sea, road and rail; warehousing solutions from packaging,
                 to repairs, to storage; mail deliveries worldwide is everything
@@ -84,7 +84,7 @@ export default function Servicepage() {
                 className="w-[220px] h-[220px] object-cover rounded-full"
               />
 
-              {/* Centered inner image */}
+          
               <div className="absolute inset-0 flex items-center justify-center">
                 <Image
                   width={200}
@@ -96,7 +96,6 @@ export default function Servicepage() {
                  group-hover:translate-y-[68%] group-hover:rotate-x-100"
                 />
 
-                {/* Centered text on second image */}
                 <div
                   className=" absolute w-[190px] h-[190px] bg-[rgba(320,132,107,0.6)] p-5 rounded-full justify-center text-center items-center flex flex-col 
     opacity-0 transition-opacity duration-500 group-hover:opacity-100"
@@ -109,11 +108,11 @@ export default function Servicepage() {
                 </div>
               </div>
             </div>
-            <div className=" md:h-80 h-40">
-              <h1 className="text-black font-normal text-lg uppercase">
+            <div className=" md:h-80 h-30">
+              <h1 className="text-black font-normal md:text-[18px] text-[16px]  uppercase">
                 Best In Packing
               </h1>
-              <p className="text-[#999] font-normal text-base">
+              <p className="text-[#999] font-normal text-[14px]">
                 We package your goods to ensure with the best packaging
                 facilities.
               </p>
@@ -155,11 +154,11 @@ export default function Servicepage() {
                 </div>
               </div>
             </div>
-            <div className=" md:h-80 h-40">
-              <h1 className="text-black font-normal text-lg uppercase">
+            <div className=" md:h-80 h-30">
+              <h1 className="text-black font-normal md:text-[18px] text-[16px] uppercase">
                 Best In Transport
               </h1>
-              <p className="text-[#999] font-normal text-base">
+              <p className="text-[#999] font-normal text-[14px]">
                 We are passionate about cargo and with our proven cargo delivery
                 process, it is easy for us to transport your package from here
                 to there.
@@ -203,11 +202,11 @@ export default function Servicepage() {
               </div>
             </div>
 
-            <div className=" md:h-80 h-40">
-              <h1 className="text-black font-normal text-lg uppercase">
+            <div className=" md:h-80 h-30">
+              <h1 className="text-black font-normal md:text-[18px] text-[16px] uppercase">
                 Best In Timing
               </h1>
-              <p className="text-[#999] font-normal text-base">
+              <p className="text-[#999] font-normal  text-[14px]">
                 With Aviary Courier Ltd, all deliveries/ packages are covered
                 against damage or theft. We provide real-time tracking of your
                 goods and send out constant notifications so you know where your
@@ -218,27 +217,27 @@ export default function Servicepage() {
         </div>
       </section>
 
-      <section className="justify-center items-center text-center flex flex-col  md:py-10 py-10">
-        <div className="bg-[#33accc] justify-center mb-5 items-center p-5 rounded-full w-15 h-15">
+      <section className="justify-center items-center text-center flex flex-col   py-8 bg-white">
+        <div className="bg-[#33accc] justify-center mb-5 items-center p-5 rounded-full flex md:w-[70px] w-[50px] md:h-[70px] h-[50px]">
           
-          <FaTrophy color="#fff" size={20} />
+          <FaTrophy color="#fff" size={30} />
         </div>
-        <h1 className="text-[#000] text-5xl">Our Service Information</h1>
+        <h1 className="text-[#000] md:text-5xl text-[19px]">Our Service Information</h1>
 
         <div className=" justify-center items-center w-[15rem] py-3 flex ">
           <Horixontalrule />
         </div>
-        <p className="text-[#999] font-normal ">
+        <p className="text-[#999]  md:text-[16px] text-[14px] font-normal ">
           Here are briefs on some of our services offered
         </p>
       </section>
 
-      <section className="flex flex-col md:px-25 px-5 ">
+      <section className="flex flex-col md:px-25 px-5 bg-white ">
         <div className="flex gap-5 md:flex-row flex-col  py-10">
           
-          <div className="md:w-[60%] flex flex-col gap-5">
-            <h1 className="text-[#33accc] text-xl">HAULAGE AND TRANSPORT.</h1>
-            <p className="leading-loose text-[#999]">
+          <div className="md:w-[60%] flex flex-col gap-5 font-normal">
+            <h1 className="text-[#33accc] md:text-[25px] text-[18px]">HAULAGE AND TRANSPORT.</h1>
+            <p className="leading-loose text-[#999] md:text-[16px] text-[14px]">
               Our cargo and haulage department also takes care of our
               warehousing services. Aviary Courier Internatonal Service offers a
               range of warehouse services to individuals and financial
@@ -273,9 +272,9 @@ export default function Servicepage() {
             alt="Your Alt Text"
             className="w-full md:h-auto h-50 object-cover" />
         </div>
-          <div className="md:w-[60%]">
-            <h1 className="text-[#33accc] text-xl">Corporate Responsibility</h1>
-            <p className="leading-loose text-[#999]">
+          <div className="md:w-[60%] font-normal">
+            <h1 className="text-[#33accc] md:text-[25px] text-[18px]">Corporate Responsibility</h1>
+            <p className="leading-loose text-[#999] md:text-[16px] text-[14px]">
               We are developing responsible initiatives and efforts across the
               globe, at our sites and with our people. Our aim is to serve the
               communities where we operate. Our group-wide values and our
@@ -292,9 +291,9 @@ export default function Servicepage() {
         </div>
 
         <div className="flex gap-5 md:flex-row flex-col py-10">
-          <div className="md:w-[60%]">
-            <h1 className="text-[#33accc] text-xl">Quality Customer Service is what we offer</h1>
-            <p className="leading-loose text-[#999]">
+          <div className="md:w-[60%] font-normal">
+            <h1 className="text-[#33accc] md:text-[25px] text-[18px]">Quality Customer Service is what we offer</h1>
+            <p className="leading-loose text-[#999] md:text-[16px] text-[14px]">
               Our highly trained customer service professionals ensure that
               every client is thoroughly satisfied. By providing customized
               solutions to all your logistics needs, you can sit back and relax.

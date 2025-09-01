@@ -23,7 +23,7 @@ const Navbar = () => {
     { href: "/services", label: "Services" },
     { href: "/ourwork", label: "Our Work" },
     { href: "/contact", label: "Contact" },
-    { href: "", label: "Track Order", icon: <CiDeliveryTruck size={15} /> },
+    { href: "", label: "Track Order", icon: <CiDeliveryTruck size={15} color="black" /> },
     { href: "/login", label: "Login", icon: <FaLock size={12} /> },
     { href: "/signup", label: "Signup", icon: <FaLockOpen size={15} /> },
   ];
@@ -35,7 +35,7 @@ const Navbar = () => {
         <div className="flex   text-left  space-x-2 text-[#163546] pt-2">
           <Link href="/" className="flex items-center space-x-2">
             <img src="/images/aviary.png" alt="Logo" className="w-20 h-13 " />
-            <p className="font-[20] font-inter text-2xl text-[#000]">
+            <p className="font-[20] font-inter  md:text-[26px] text-[27px] text-[#000]">
               Marto courier
             </p>
           </Link>
@@ -96,12 +96,12 @@ const Navbar = () => {
        
         
         <div >
-            <ul className="md:hidden flex flex-col space-y-4 px-6 pb-4 bg-[#e4e4e4]  font-normal text-black">
+            <ul className="md:hidden flex flex-col   pb-4 bg-[#e4e4e4] h-[26rem] mx-4  font-normal text-black">
               {links.map((link) => (
                 <li
                   className={`${pathname === link.href
                       ? "bg-[#33accc] text-white "
-                      : " text-[#777] "}hover:text-white hover:bg-[#33accc] tex justify-center text-center  flex items-center py-4 px-2`}
+                      : " text-[#777] "}hover:text-white hover:bg-[#33accc] text-[14px] justify-center text-center  flex items-center py-4 px-2`}
                 >
                   {link.icon}
                   <Link key={link.href} href={link.href}>

@@ -9,7 +9,7 @@ export const Content = ({ text,text2,text3,pathname}: { text: string,text2:strin
             initial={{ opacity: 0, y: 40 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0 }}
-            className={pathname==="/"?'md:text-[65px] text-[32px]  font-normal whitespace-nowrap':"md:text-[65px] text-[26px]  font-normal whitespace-nowrap"}
+            className={pathname==="/"?'md:text-[65px] text-[30px]  font-normal whitespace-nowrap':"md:text-[65px] text-[26px]  font-normal whitespace-nowrap"}
           >
             {text}
           </motion.h2>
