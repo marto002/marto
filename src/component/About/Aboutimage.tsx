@@ -13,7 +13,7 @@ export default function Aboutimage() {
            <div className='grid md:grid-cols-[70%_30%] grid-cols-1 md:gap-0 gap-5'>
             {/*left */}
              <div className='grid md:grid-cols-2 grid-cols-1 md:gap-0 gap-5'>
-              <div className='flex flex-col gap-5 justify-center items-center md:w-[23.5rem] h-screen pb-10  border-[#ddd] border-1 '>
+              <div className='flex flex-col gap-5 justify-center items-center md:w-[23.5rem] md:h-screen h-[28rem] pb-10  border-[#ddd] border-1 '>
                 <div className="w-full h-full overflow-hidden ">
     
                  <motion.div className="w-full h-full flex items-center justify-center mb-8 md:mb-0 "
@@ -39,7 +39,7 @@ export default function Aboutimage() {
       </div></div>
       
              </div>
-               <div className='flex gap-5 flex-col justify-center items-center md:w-[23.5rem] h-screen pb-10 p-1 border-[#ddd] border-1 '>
+               <div className='flex gap-5 flex-col justify-center items-center md:w-[23.5rem] md:h-screen h-[28rem] pb-10 p-1 border-[#ddd] border-1 '>
              <div className="w-full h-full overflow-hidden">
     
                  <motion.div className="w-full h-full flex items-center justify-center mb-8 md:mb-0 "
