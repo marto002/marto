@@ -54,7 +54,7 @@ export default function Home() {
     className="absolute inset-0 bg-cover bg-center"
     style={{
       backgroundImage: `url("/images/banner2.jpg")`,
-      backgroundAttachment: "fixed", 
+      
     }}
   ></div>
 
@@ -87,7 +87,7 @@ export default function Home() {
     className="absolute inset-0 bg-cover bg-center"
     style={{
       backgroundImage: `url("/images/banner3.jpg")`,
-      backgroundAttachment: "fixed", 
+     
     }}
   ></div>
 

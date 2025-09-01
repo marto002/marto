@@ -1,6 +1,5 @@
 import React from 'react'
-import Image from "next/image";
-import { FaBraille, FaFacebookF, FaGooglePlusG, FaLinkedinIn, FaTrophy, FaTwitter } from 'react-icons/fa'
+import { FaBraille, FaTrophy,  } from 'react-icons/fa'
 import Horixontalrule from '../Content/horixontalrule'
 import Aboutimage from './Aboutimage';
 
