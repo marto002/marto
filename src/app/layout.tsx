@@ -45,24 +45,24 @@ export default function RootLayout({ children, isAboutPage }: FirstSectionProps)
         contentTex3="International Service"
       contentTex2=   'Put in your Track I.D and start Tracking your Package Instantly.'
   ;
-    }else if (pathname.startsWith('/ourwork')) { 
+    }else if (pathname &&pathname.startsWith('/ourwork')) { 
       contentText1 = ' Marto Courier '
       contentTex3="International Service"
       contentTex2=   'We Offer International express deliveries; global freight forwarding by air, sea, road and rail;';
  
     }
-    else if (pathname.startsWith('/services')) { 
+    else if (pathname &&pathname.startsWith('/services')) { 
       contentText1 = 'Marto Courier '
       contentTex3="International Service"
       contentTex2=   'Service to others is the rent you pay for your room here on earth.'
    ;
     }
-    else if (pathname.startsWith('/signup9')) { 
+    else if (pathname &&pathname.startsWith('/signup9')) { 
       contentText1 = ' Create the growth'
       contentTex2=   'your company is'
    ;
     }
-     else if (pathname.startsWith('/trackorder9')) { 
+     else if (pathname &&pathname.startsWith('/trackorder9')) { 
       contentText1 = ' Create the growth'
       contentTex2=   'your company is'
    ;
@@ -137,10 +137,10 @@ export default function RootLayout({ children, isAboutPage }: FirstSectionProps)
   
     <div>
       <div className={pathname==="/"?" md:py-[150px] py-[2.7rem] flex flex-col items-center justify-center text-center px-4 md:mt-30":"md:py-[30px] py-[1.5rem] flex flex-col items-center justify-center text-center px-4 mt-30"}>
-        <Content text={contentText1}
+       {pathname && ( <Content text={contentText1}
         text2={contentTex2}
         text3={contentTex3}
-        pathname={pathname} />
+        pathname={pathname} />)}
      
       </div>
 

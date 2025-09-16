@@ -6,16 +6,27 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import { CiDeliveryTruck } from "react-icons/ci";
 import { FaLock, FaLockOpen } from "react-icons/fa";
 import { usePathname } from "next/navigation";
+import { useAuthStore } from "../Login/login";
 
-type NavbarProps = {
-  search: string;
-  setSearch: React.Dispatch<React.SetStateAction<string>>;
-};
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
-  const [showSearch, setShowSearch] = useState<boolean>(false);
-  const pathname = usePathname();
+  
+ const pathname = usePathname();
+/*
+  const links = [
+    { href: "/", label: "Home" },
+    { href: "/about", label: "About" },
+    { href: "/services", label: "Services" },
+    { href: "/ourwork", label: "Our Work" },
+    { href: "/contact", label: "Contact" },
+    { href: "/trackorder", label: "Track Order", icon: <CiDeliveryTruck size={15} color="black" /> },
+    { href: "/profile", label: "profile", icon: <FaLock size={12} />  },
+     { href: "/login", label: "Signup", icon: <FaLockOpen size={15} /> },
+  ];*/
+
+  const isLoggedIn = useAuthStore((state) => state.isLoggedIn); // ✅
+  const logout = useAuthStore((state) => state.logout); // Optional logout
 
   const links = [
     { href: "/", label: "Home" },
@@ -23,10 +34,14 @@ const Navbar = () => {
     { href: "/services", label: "Services" },
     { href: "/ourwork", label: "Our Work" },
     { href: "/contact", label: "Contact" },
-    { href: "", label: "Track Order", icon: <CiDeliveryTruck size={15} color="black" /> },
-    { href: "/login", label: "Login", icon: <FaLock size={12} /> },
-    { href: "/signup", label: "Signup", icon: <FaLockOpen size={15} /> },
+    ...(isLoggedIn
+      ? [
+          { href: "/trackorder", label: "Track Order", icon: <CiDeliveryTruck size={15} color="black" /> },
+          { href: "/profile", label: "Profile", icon: <FaLock size={12} /> },
+        ]
+      : [{ href: "/login", label: "Signup", icon: <FaLockOpen size={15} /> }]),
   ];
+
 
   return (
     <div className="fixed top-0 left-0 z-50 w-full bg-[#f8f8f8] font-nunito md:px-22 ">
@@ -40,23 +55,6 @@ const Navbar = () => {
             </p>
           </Link>
         </div>
-        {/*
-<div className="flex  items-center justify-center bg-red-500">
-          <ul className="hidden md:flex items-center  text-[#777] font-normal uppercase whitespace-nowrap ">
-            <li className="hover:text-white hover:bg-[#33accc] justify-center text-center active:bg-amber-300 font-bold py-4 px-4 text-base "><Link href="/">Home</Link></li>
-            <li className="hover:text-white hover:bg-[#33accc] justify-center text-center active:bg-amber-300 font-bold py-4 px-4 ">
-              <Link href="/about">About</Link></li>
-            <li className="hover:text-white hover:bg-[#33accc] justify-center text-center active:bg-amber-300 font-bold py-4 px-4"><Link href="/services">Services</Link></li>
-            <li className="hover:text-white hover:bg-[#33accc] justify-center text-center font-normal py-4 px-4">
-              <Link href="/ourwork"> Our Work</Link></li>
-            <li className="hover:text-white hover:bg-[#33accc] justify-center text-center font-normal py-4 px-4 bg-amber-700"><Link href="/contact">Contact</Link></li>
-            <li className="hover:text-white hover:bg-[#33accc] justify-center text-center font-normal flex items-center py-4 px-4">
-            <CiDeliveryTruck color="black" size="15"/>
-            <Link href="/trackorder"> Track Order</Link></li>
-            <li className="hover:text-white hover:bg-[#33accc] justify-center text-center font-normal flex items-center bg-amber-700 py-4 px-4"><FaLock size="12" color="black"/><Link href="/service">Login</Link></li>
-            <li className="hover:text-white hover:bg-[#33accc] justify-center text-center font-normal flex items-center py-4 px-4"> <FaLockOpen size="15" color="black"/><Link href="/contact">Signup</Link></li>
-               </ul>
-          </div>*/}
 
         <div className="flex  items-center justify-center   ">
           <ul className="bg-[#f8f8f8] hidden md:flex items-center gap-0 text-sm  font-medium uppercase whitespace-nowrap ">
