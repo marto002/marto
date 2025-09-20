@@ -4,6 +4,8 @@ import { useEffect, useState } from "react";
 import Image from "next/image";
 
 export default function Trackorder() {
+
+
   const [activeTab, setActiveTab] = useState("Profile");
 
   const [order] = useState({
@@ -35,13 +37,21 @@ export default function Trackorder() {
   }, []);
 
   
-    const [users, setUsers] = useState<any[]>([]);
+    const [user, setUser] = useState<any[]>([]);
   
-    useEffect(() => {
+   /* useEffect(() => {
       fetch("/api/admin/users")
         .then((res) => res.json())
         .then((data) => setUsers(data.users));
-    }, []);
+    }, []);*/
+    useEffect(() => {
+    const email = localStorage.getItem("userEmail");
+    if (email) {
+      fetch(`/api/users/${encodeURIComponent(email)}`)
+        .then(res => res.json())
+        .then(data => setUser(data.user));
+    }
+  }, []);
 
   return (
     <div className="min-h-screen bg-gray-100 p-6">
@@ -92,7 +102,11 @@ export default function Trackorder() {
                     Track your Order
                   </h2>
                   <p className="text-sm text-gray-600 mb-4">
-                     customer name: 
+                     {user ? (
+        <p>Welcome back,   🎉</p>
+      ) : (
+        <p>Loading user info...</p>
+      )}
                     
                   </p>
 

@@ -1,7 +1,5 @@
 "use client";
 
-
-
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useAuthStore } from "./login";
@@ -29,46 +27,51 @@ export default function Signin() {
     formState: { errors },
   } = useForm<LoginFormInputs | SignupFormInputs>();
 
+  const onSubmit = async (data: any) => {
+    const { email, password } = data;
 
+    // 🔹 Admin stays hardcoded
+    if (email === "admin@site.com" && password === "admin123") {
+      login("admin");
+      router.push("/admin");
+      alert("Admin login successful ✅");
+      return;
+    }
 
+    try {
+      const endpoint = isLogin ? "/api/auth/login" : "/api/auth/signup";
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        //body: JSON.stringify(data),
+        body: JSON.stringify({ email, password }),
+      });
 
+      const result = await res.json();
 
+      if (!res.ok) throw new Error(result.error || "Something went wrong");
+      const userEmail = result.user?.email;
 
-
-const onSubmit = async (data: any) => {
-  const { email, password } = data;
-
-  // 🔹 Admin stays hardcoded
-  if (email === "admin@site.com" && password === "admin123") {
-    login("admin");
-    router.push("/admin");
-    alert("Admin login successful ✅");
-    return;
-  }
-
-  try {
-    const endpoint = isLogin ? "/api/auth/login" : "/api/auth/signup";
-    const res = await fetch(endpoint, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      //body: JSON.stringify(data),
-      body: JSON.stringify({ email, password }),
-    });
-
-
-
-    const result = await res.json();
-
-    if (!res.ok) throw new Error(result.error || "Something went wrong");
-
-    login("user");
-    alert(result.message);
-    if (isLogin) router.push("/"); // redirect user if needed
-  } catch (err: any) {
-    alert(err.message);
-  }
-};
-
+      login("user");
+      alert(result.message);
+/*
+      if (userEmail) {
+        const uRes = await fetch(`/api/users/${encodeURIComponent(userEmail)}`);
+        const uJson = await uRes.json();
+        if (uRes.ok) {
+          // do something with uJson.user
+          console.log("Full user:", uJson.user);
+          // optionally store in context or localStorage (avoid storing password)
+        } else {
+          console.warn("Failed to fetch user details:", uJson);
+        }
+      }
+*/
+      if (isLogin) router.push("/"); // redirect user if needed
+    } catch (err: any) {
+      alert(err.message);
+    }
+  };
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-[#33accc]">
@@ -77,7 +80,11 @@ const onSubmit = async (data: any) => {
           {isLogin ? "Login" : "Signup"}
         </h2>
 
-        <form onSubmit={handleSubmit(onSubmit)} method="POST" className="space-y-4">
+        <form
+          onSubmit={handleSubmit(onSubmit)}
+          method="POST"
+          className="space-y-4"
+        >
           <input
             type="email"
             placeholder="Email"
