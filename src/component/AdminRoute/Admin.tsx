@@ -2,7 +2,6 @@
 import { useEffect, useState } from "react";
 import Image from "next/image";
 
-
 export default function Admin() {
   const [activeTab, setActiveTab] = useState("USERS");
   const [order] = useState({
@@ -22,7 +21,6 @@ export default function Admin() {
       .then((res) => res.json())
       .then((data) => setUsers(data.users));
   }, []);
-
   return (
     <div className="bg-white rounded-md p-5  min-h-screen">
       <div className=" text-black justify-center text-center">
@@ -52,18 +50,9 @@ export default function Admin() {
 
         <div className="px-5">
           {activeTab === "USERS" && (
-            <div className="flex flex-col md:flex-row gap-5 text-black">
-              <div className="w-22 h-20 rounded-full overflow-hidden border-2 border-[#F5F7FA] mx-auto md:mx-0">
-                <Image
-                  src="/image/topnavimg.png"
-                  alt="User Avatar"
-                  width={40}
-                  height={40}
-                  className="object-cover w-full h-full"
-                />
-              </div>
-              <p>profile </p>
-              <button>log out</button>
+            <div className="flex flex-col  gap-5 text-black">
+             <p className="font-bold text-[[#343C6A]]">USERS THATR SIGNUP</p>
+              
 
               <div className="overflow-x-auto mt-6">
                 <table className="min-w-full border border-gray-300 rounded-lg">
@@ -80,10 +69,16 @@ export default function Admin() {
                       <tr key={i} className="hover:bg-gray-50">
                         <td className="px-4 py-2 border">{user.email}</td>
                         <td className="px-4 py-2 border">{user.role}</td>
+
                         <td className="px-4 py-2 border">
-                          {user.trackingId?.length
-                           }
-                        </td>
+  {user.trackingId ? (
+    <span>{user.trackingId}</span>
+  ) : (
+    <span className="text-gray-400">No tracking yet</span>
+  )}
+</td>
+
+
                         <td className="px-4 py-2 border">
                           {new Date(user.createdAt).toLocaleDateString()}
                         </td>
@@ -99,9 +94,9 @@ export default function Admin() {
             <div className="text-[#343C6A]">
               <div className="max-w-4xl mx-auto  p-6">
                 {/* Track Order */}
-                <h2 className="text-lg font-semibold mb-4">Track your Order</h2>
+                <h2 className="text-lg font-semibold mb-4"></h2>
                 <p className="text-sm text-gray-600 mb-4">
-                  Order Code: {order.code}
+                 
                 </p>
 
                 <div className="flex items-center justify-between mb-4">
@@ -127,52 +122,14 @@ export default function Admin() {
                 </div>
 
                 <p className="text-sm text-gray-600">
-                  Your order has been delivered <br />
+                   <br />
                   <span className="text-gray-400">
-                    Marto courier Tracking: 9376763836642021
+                   
                   </span>
                 </p>
 
                 {/* Orders Table */}
-                <h2 className="text-lg font-semibold mt-6 mb-4">All Orders</h2>
-                <table className="w-full border text-sm">
-                  <thead className="bg-gray-50">
-                    <tr>
-                      <th className="border px-3 py-2">#</th>
-                      <th className="border px-3 py-2">Order Code</th>
-                      <th className="border px-3 py-2">Product Name</th>
-                      <th className="border px-3 py-2">Qty</th>
-                      <th className="border px-3 py-2">Price</th>
-                      <th className="border px-3 py-2">Delivery Status</th>
-                      <th className="border px-3 py-2">Order Status</th>
-                      <th className="border px-3 py-2">Payout</th>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    <tr>
-                      <td className="border px-3 py-2">01</td>
-                      <td className="border px-3 py-2">{order.code}</td>
-                      <td className="border px-3 py-2">{order.product}</td>
-                      <td className="border px-3 py-2">{order.qty}</td>
-                      <td className="border px-3 py-2">{order.price}</td>
-                      <td className="border px-3 py-2">
-                        <span className="px-2 py-1 rounded bg-gray-300">
-                          {order.status}
-                        </span>
-                      </td>
-                      <td className="border px-3 py-2">
-                        <span className="px-2 py-1 rounded bg-[#33accc] text-white">
-                          {order.orderStatus}
-                        </span>
-                      </td>
-                      <td className="border px-3 py-2">
-                        <span className="px-2 py-1 rounded bg-orange-600 text-white">
-                          {order.payout}
-                        </span>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+
               </div>
             </div>
           )}

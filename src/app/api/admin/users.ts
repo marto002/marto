@@ -9,7 +9,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   await connectDB();
 
   if (req.method === "GET") {
-    const users = await User.find({}, "email role trackingNumbers createdAt");
+    const users = await User.find({}, "email role trackingId createdAt");
     return res.status(200).json({ users });
   }
 
