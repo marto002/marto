@@ -27,10 +27,7 @@ export default function Home() {
                     if (d.head) d.head.appendChild(s);
                 })(document, window, 'Chatra');
               `,
-              Chatra('openChat', true);
-  Chatra('sendMessage', {
-    text: "Hi 👋, choose a question below:\n\n1️⃣ What shipping services do you offer?\n2️⃣ What areas do you serve?\n3️⃣ How do I track my shipment?\n4️⃣ What is your customer service contact information?"
-  
+             
             }};
           />
       <section className="flex flex-col items-center justify-center w-full  mx-auto  bg-white md:py-20 py-6 px-6  ">
