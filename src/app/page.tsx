@@ -12,30 +12,24 @@ export default function Home() {
   return (
     <div className="bg-white">
 
-      <Script
-  id="chatra-auto-response"
-  strategy="afterInteractive"
-  dangerouslySetInnerHTML={{
-    __html: `
-      window.addEventListener('ChatraReady', function() {
-        Chatra.on('messageReceived', function(message) {
-          const text = message.text.toLowerCase();
-
-          if (text.includes('shipping services')) {
-            Chatra.sendMessage('We ship by air and land');
-          } else if (text.includes('areas do you serve')) {
-            Chatra.sendMessage('We ship worldwide');
-          } else if (text.includes('track my shipment')) {
-            Chatra.sendMessage('You can track your shipment using the tracking ID we provide in your order confirmation email.');
-          } else if (text.includes('customer service')) {
-            Chatra.sendMessage('You can reach us at support@example.com or call +123456789');
-          }
-        });
-      });
-    `,
-  }}
-/>
-
+     <Script
+            id="chatra-script"
+            strategy="afterInteractive"
+            dangerouslySetInnerHTML={{
+              __html: `
+                (function(d, w, c) {
+                    w.ChatraID = '3mrDbWYMFC3Yxm7av';
+                    var s = d.createElement('script');
+                    w[c] = w[c] || function() {
+                        (w[c].q = w[c].q || []).push(arguments);
+                    };
+                    s.async = true;
+                     s.src = 'https://call.chatra.io/chatra.js';
+                    if (d.head) d.head.appendChild(s);
+                })(document, window, 'Chatra');
+              `,
+            }}
+          />
       <section className="flex flex-col items-center justify-center w-full  mx-auto  bg-white md:py-20 py-6 px-6  ">
         <p className="text-[#000] text-[23px]  md:text-[50px] text-center">
           Our Specialities
