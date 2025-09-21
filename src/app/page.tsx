@@ -11,44 +11,27 @@ export default function Home() {
   const router = useRouter();
   return (
     <div className="bg-white">
-     <Script
-  id="chatra-script"
+
+      <Script
+  id="chatra-auto-response"
   strategy="afterInteractive"
   dangerouslySetInnerHTML={{
     __html: `
-      (function(d, w, c) {
-          w.ChatraID = '3mrDbWYMFC3Yxm7av';
-          var s = d.createElement('script');
-          w[c] = w[c] || function() {
-              (w[c].q = w[c].q || []).push(arguments);
-          };
-          s.async = true;
-          s.src = 'https://call.chatra.io/chatra.js';
-          if (d.head) d.head.appendChild(s);
+      window.addEventListener('ChatraReady', function() {
+        Chatra.on('messageReceived', function(message) {
+          const text = message.text.toLowerCase();
 
-          // Wait until Chatra is ready
-          function addQuickReplies() {
-              if (!w.Chatra || !w.Chatra.sendMessage) {
-                  setTimeout(addQuickReplies, 500);
-                  return;
-              }
-
-              // Add predefined questions
-              const questions = [
-                  "What shipping services do you offer?",
-                  "What areas do you serve?",
-                  "How do I track my shipment?",
-                  "What is your customer service contact information?"
-              ];
-
-              // Create buttons in chat
-              questions.forEach(q => {
-                  w.Chatra.sendMessage(q);
-              });
+          if (text.includes('shipping services')) {
+            Chatra.sendMessage('We ship by air and land');
+          } else if (text.includes('areas do you serve')) {
+            Chatra.sendMessage('We ship worldwide');
+          } else if (text.includes('track my shipment')) {
+            Chatra.sendMessage('You can track your shipment using the tracking ID we provide in your order confirmation email.');
+          } else if (text.includes('customer service')) {
+            Chatra.sendMessage('You can reach us at support@example.com or call +123456789');
           }
-
-          addQuickReplies();
-      })(document, window, 'Chatra');
+        });
+      });
     `,
   }}
 />
