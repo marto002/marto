@@ -11,24 +11,48 @@ export default function Home() {
   const router = useRouter();
   return (
     <div className="bg-white">
-       <Script
-            id="chatra-script"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
-                (function(d, w, c) {
-                    w.ChatraID = '3mrDbWYMFC3Yxm7av';
-                    var s = d.createElement('script');
-                    w[c] = w[c] || function() {
-                        (w[c].q = w[c].q || []).push(arguments);
-                    };
-                    s.async = true;
-                     s.src = 'https://call.chatra.io/chatra.js';
-                    if (d.head) d.head.appendChild(s);
-                })(document, window, 'Chatra');
-              `,
-            }}
-          />
+     <Script
+  id="chatra-script"
+  strategy="afterInteractive"
+  dangerouslySetInnerHTML={{
+    __html: `
+      (function(d, w, c) {
+          w.ChatraID = '3mrDbWYMFC3Yxm7av';
+          var s = d.createElement('script');
+          w[c] = w[c] || function() {
+              (w[c].q = w[c].q || []).push(arguments);
+          };
+          s.async = true;
+          s.src = 'https://call.chatra.io/chatra.js';
+          if (d.head) d.head.appendChild(s);
+
+          // Wait until Chatra is ready
+          function addQuickReplies() {
+              if (!w.Chatra || !w.Chatra.sendMessage) {
+                  setTimeout(addQuickReplies, 500);
+                  return;
+              }
+
+              // Add predefined questions
+              const questions = [
+                  "What shipping services do you offer?",
+                  "What areas do you serve?",
+                  "How do I track my shipment?",
+                  "What is your customer service contact information?"
+              ];
+
+              // Create buttons in chat
+              questions.forEach(q => {
+                  w.Chatra.sendMessage(q);
+              });
+          }
+
+          addQuickReplies();
+      })(document, window, 'Chatra');
+    `,
+  }}
+/>
+
       <section className="flex flex-col items-center justify-center w-full  mx-auto  bg-white md:py-20 py-6 px-6  ">
         <p className="text-[#000] text-[23px]  md:text-[50px] text-center">
           Our Specialities
