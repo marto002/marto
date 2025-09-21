@@ -13,17 +13,7 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   
  const pathname = usePathname();
-/*
-  const links = [
-    { href: "/", label: "Home" },
-    { href: "/about", label: "About" },
-    { href: "/services", label: "Services" },
-    { href: "/ourwork", label: "Our Work" },
-    { href: "/contact", label: "Contact" },
-    { href: "/trackorder", label: "Track Order", icon: <CiDeliveryTruck size={15} color="black" /> },
-    { href: "/profile", label: "profile", icon: <FaLock size={12} />  },
-     { href: "/login", label: "Signup", icon: <FaLockOpen size={15} /> },
-  ];*/
+
 
   const isLoggedIn = useAuthStore((state) => state.isLoggedIn); // ✅
   const logout = useAuthStore((state) => state.logout); // Optional logout
@@ -37,7 +27,7 @@ const Navbar = () => {
     ...(isLoggedIn
       ? [
           { href: "/trackorder", label: "Track Order", icon: <CiDeliveryTruck size={15} color="black" /> },
-          { href: "/profile", label: "Profile", icon: <FaLock size={12} /> },
+          { href: "/", label: "Profile", icon: <FaLock size={12} /> },
         ]
       : [{ href: "/login", label: "Signup", icon: <FaLockOpen size={15} /> }]),
   ];
