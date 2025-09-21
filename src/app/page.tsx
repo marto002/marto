@@ -27,8 +27,7 @@ export default function Home() {
                     if (d.head) d.head.appendChild(s);
                 })(document, window, 'Chatra');
               `,
-             
-            }};
+            }}
           />
       <section className="flex flex-col items-center justify-center w-full  mx-auto  bg-white md:py-20 py-6 px-6  ">
         <p className="text-[#000] text-[23px]  md:text-[50px] text-center">
