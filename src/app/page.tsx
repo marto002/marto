@@ -30,8 +30,8 @@ export default function Home() {
               Chatra('openChat', true);
   Chatra('sendMessage', {
     text: "Hi 👋, choose a question below:\n\n1️⃣ What shipping services do you offer?\n2️⃣ What areas do you serve?\n3️⃣ How do I track my shipment?\n4️⃣ What is your customer service contact information?"
-  });
-            }}
+  
+            }};
           />
       <section className="flex flex-col items-center justify-center w-full  mx-auto  bg-white md:py-20 py-6 px-6  ">
         <p className="text-[#000] text-[23px]  md:text-[50px] text-center">
