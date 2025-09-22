@@ -49,7 +49,7 @@ export default function Signin() {
 
       const result = await res.json();
 
-      if (!res.ok) throw new Error(result.error || "Something went wrong");
+      if (!res.ok) throw new Error(result.error || "User already exists");
       const userEmail = result.user?.email;
 
       login("user");
@@ -79,8 +79,15 @@ alert(result.message);
       if (isLogin) router.push("/"); // redirect user if needed
     } catch (err: any) {
       alert(err.message);
+      if (err instanceof Error) {
+        setServerError(err.message); // safe error message
+      } else {
+        setServerError("An unexpected error occurred");
+      }
     }
   };
+const [serverError, setServerError] = useState<string | null>(null);
+
 
   return (
     <div className="min-h-screen flex items-center justify-center ">
@@ -94,6 +101,8 @@ alert(result.message);
           method="POST"
           className="space-y-4"
         >
+          {serverError && <p className="text-red-500 text-sm">{serverError}</p>}
+
           <input
             type="email"
             placeholder="Email"
@@ -104,27 +113,44 @@ alert(result.message);
             <p className="text-red-500 text-sm">{errors.email.message}</p>
           )}
 
-          <input
-            type="password"
-            placeholder="Password"
-            {...register("password", { required: "Password is required" })}
-            className="w-full px-4 py-2 border rounded border-black"
-          />
+         
+<div>
+ 
+           <input
+  type="password"
+  placeholder="Password"
+  {...register("password", { 
+    required: "Password is required",
+    pattern: {
+      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
+      message: "Password must be at least 8 chars, include uppercase, lowercase, number & symbol"
+    }
+  })}
+  className="w-full px-4 py-2 border rounded border-black"
+/>
+
           {errors.password && (
             <p className="text-red-500 text-sm">{errors.password.message}</p>
           )}
 
           {!isLogin && (
-            <input
-              type="password"
-              placeholder="Confirm password"
-              {...register("confirmPassword", {
-                required: "Confirm password is required ",
-              })}
-              className="w-full px-4 py-2 border text-black border-black rounded"
-            />
+           
+             <input
+  type="password"
+  placeholder="Confirm password"
+  {...register("confirmPassword", { 
+    required: "Confirm password is required ",
+    pattern: {
+      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
+      message: " ConfirmPassword must be at least 8 chars, include uppercase, lowercase, number & symbol"
+    }
+  })}
+  className="w-full px-4 py-2 border rounded border-black"
+/>
+
           )}
 
+</div>
           <button
             type="submit"
             className="w-full bg-[#33accc] text-white py-2 rounded text-2xl font-semibold"
