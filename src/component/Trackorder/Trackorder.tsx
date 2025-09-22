@@ -99,7 +99,7 @@ export default function Trackorder() {
                       <p>Loading user info...</p>
                     )}
                   </p>
-
+{/*
                   <div className="flex items-center justify-between mb-4">
                     {["Placed", "Packed", "Shipped", "Delivered"].map(
                       (step, i) => (
@@ -120,7 +120,7 @@ export default function Trackorder() {
                         </div>
                       )
                     )}
-                  </div>
+                  </div>*/}
 
                   <p className="text-sm text-gray-600">
                     Your order has been made <br />

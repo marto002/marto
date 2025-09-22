@@ -99,7 +99,7 @@ export default function Admin() {
                  
                 </p>
 
-                <div className="flex items-center justify-between mb-4">
+              {/*  <div className="flex items-center justify-between mb-4">
                   {["Placed", "Packed", "Shipped", "Delivered"].map(
                     (step, i) => (
                       <div key={i} className="flex-1 flex items-center">
@@ -119,7 +119,7 @@ export default function Admin() {
                       </div>
                     )
                   )}
-                </div>
+                </div>*/}
 
                 <p className="text-sm text-gray-600">
                    <br />
