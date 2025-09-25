@@ -18,7 +18,7 @@ export default function Home() {
             dangerouslySetInnerHTML={{
               __html: `
                 (function(d, w, c) {
-                    w.ChatraID = '3mrDbWYMFC3Yxm7av';
+                    w.ChatraID = 'jJHt32jWGnB34MF7B';
                     var s = d.createElement('script');
                     w[c] = w[c] || function() {
                         (w[c].q = w[c].q || []).push(arguments);

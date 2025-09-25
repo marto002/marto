@@ -39,7 +39,7 @@ const Navbar = () => {
       
         <div className="flex   text-left  space-x-2 text-[#163546] pt-2">
           <Link href="/" className="flex items-center space-x-2">
-            <img src="/images/aviary.png" alt="Logo" className="w-20 h-13 " />
+            <img src="/images/martrologo.png" alt="Logo" className="w-20 h-13 " />
             <p className="font-[20] font-inter  md:text-[26px] text-[27px] text-[#000]">
               Marto courier
             </p>

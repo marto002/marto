@@ -8,7 +8,6 @@ export default function Servicepage() {
     <div className="bg-white">
       <section className="flex flex-col items-center justify-center w-full  mx-auto md:my-0 my-0 bg-white md:py-15 py-6 md:px-30 px-6  ">
         <div className="bg-[#33accc]  justify-center items-center p-5 rounded-full flex md:w-[70px] w-[50px] md:h-[70px] h-[50px]">
-          
           <FaBraille color="#fff" size={30} />
         </div>
 
@@ -20,8 +19,8 @@ export default function Servicepage() {
           <Horixontalrule />
         </div>
         <p className="text-[#999] text-lg leading-loose">
-          Here are the variety of services offered by Aviary Courier
-          Internatonal Limited.
+          Here are the variety of services offered by Marto Courier Internatonal
+          Limited.
         </p>
       </section>
       <section className="md:px-35 p-5 justify-center  items-center flex flex-col bg-white">
@@ -57,7 +56,7 @@ export default function Servicepage() {
                   <div className="overflow-hidden w-full justify-center items-center flex ">
                     <hr className=" border-white mt-4 border-1 rounded-2xl md:w-full w-[30%] " />
                   </div>
-                  <p className="">By Aviary Courier International Service</p>
+                  <p className="">By Marto Courier International Service</p>
                 </div>
               </div>
             </div>
@@ -69,7 +68,7 @@ export default function Servicepage() {
                 International express deliveries; global freight forwarding by
                 air, sea, road and rail; warehousing solutions from packaging,
                 to repairs, to storage; mail deliveries worldwide is everything
-                Aviary Courier ltd does.
+                Marto Courier ltd does.
               </p>
             </div>
           </div>
@@ -84,7 +83,6 @@ export default function Servicepage() {
                 className="w-[220px] h-[220px] object-cover rounded-full"
               />
 
-          
               <div className="absolute inset-0 flex items-center justify-center">
                 <Image
                   width={200}
@@ -104,7 +102,7 @@ export default function Servicepage() {
                   <div className="overflow-hidden w-full justify-center items-center flex ">
                     <hr className=" border-white mt-4 border-1 rounded-2xl md:w-full w-[30%] " />
                   </div>
-                  <p className="">By Aviary Courier International Service</p>
+                  <p className="">By Marto Courier International Service</p>
                 </div>
               </div>
             </div>
@@ -150,7 +148,7 @@ export default function Servicepage() {
                   <div className="overflow-hidden w-full justify-center items-center flex ">
                     <hr className=" border-white mt-4 border-1 rounded-2xl md:w-full w-[30%] " />
                   </div>
-                  <p className="">By Aviary Courier International Service</p>
+                  <p className="">By Marto Courier International Service</p>
                 </div>
               </div>
             </div>
@@ -197,7 +195,7 @@ export default function Servicepage() {
                   <div className="overflow-hidden w-full justify-center items-center flex ">
                     <hr className=" border-white mt-4 border-1 rounded-2xl md:w-full w-[30%] " />
                   </div>
-                  <p className="">By Aviary Courier International Service</p>
+                  <p className="">By Marto Courier International Service</p>
                 </div>
               </div>
             </div>
@@ -207,7 +205,7 @@ export default function Servicepage() {
                 Best In Timing
               </h1>
               <p className="text-[#999] font-normal  text-[14px]">
-                With Aviary Courier Ltd, all deliveries/ packages are covered
+                With Marto Courier Ltd, all deliveries/ packages are covered
                 against damage or theft. We provide real-time tracking of your
                 goods and send out constant notifications so you know where your
                 items are at all times.
@@ -219,10 +217,11 @@ export default function Servicepage() {
 
       <section className="justify-center items-center text-center flex flex-col   py-8 bg-white">
         <div className="bg-[#33accc] justify-center mb-5 items-center p-5 rounded-full flex md:w-[70px] w-[50px] md:h-[70px] h-[50px]">
-          
           <FaTrophy color="#fff" size={30} />
         </div>
-        <h1 className="text-[#000] md:text-5xl text-[19px]">Our Service Information</h1>
+        <h1 className="text-[#000] md:text-5xl text-[19px]">
+          Our Service Information
+        </h1>
 
         <div className=" justify-center items-center w-[15rem] py-3 flex ">
           <Horixontalrule />
@@ -234,12 +233,13 @@ export default function Servicepage() {
 
       <section className="flex flex-col md:px-25 px-5 bg-white ">
         <div className="flex gap-5 md:flex-row flex-col  py-10">
-          
           <div className="md:w-[60%] flex flex-col gap-5 font-normal">
-            <h1 className="text-[#33accc] md:text-[25px] text-[18px]">HAULAGE AND TRANSPORT.</h1>
+            <h1 className="text-[#33accc] md:text-[25px] text-[18px]">
+              HAULAGE AND TRANSPORT.
+            </h1>
             <p className="leading-loose text-[#999] md:text-[16px] text-[14px]">
               Our cargo and haulage department also takes care of our
-              warehousing services. Aviary Courier Internatonal Service offers a
+              warehousing services. Marto Courier Internatonal Service offers a
               range of warehouse services to individuals and financial
               institutions. We have bonded warehouses at various locations
               around the world. These warehouses have been serving individual
@@ -253,27 +253,31 @@ export default function Servicepage() {
               professional
             </p>
           </div>
-           <div className="w-full md:w-[40%] flex items-center justify-center mb-8 md:mb-0 ">
-          <Image
-          width={200}
-          height={200}
-            src="/images/service1.jpg"
-            alt="Your Alt Text"
-            className="w-full md:h-auto h-50 object-cover" />
-        </div>
+          <div className="w-full md:w-[40%] flex items-center justify-center mb-8 md:mb-0 ">
+            <Image
+              width={200}
+              height={200}
+              src="/images/service1.jpg"
+              alt="Your Alt Text"
+              className="w-full md:h-auto h-50 object-cover"
+            />
+          </div>
         </div>
 
         <div className="flex gap-5 md:flex-row flex-col py-10">
-           <div className="w-full md:w-[40%] flex items-center justify-center mb-8 md:mb-0 ">
-          <Image
-          width={200}
-          height={200}
-            src="/images/service2.jpg"
-            alt="Your Alt Text"
-            className="w-full md:h-auto h-50 object-cover" />
-        </div>
+          <div className="w-full md:w-[40%] flex items-center justify-center mb-8 md:mb-0 ">
+            <Image
+              width={200}
+              height={200}
+              src="/images/service2.jpg"
+              alt="Your Alt Text"
+              className="w-full md:h-auto h-50 object-cover"
+            />
+          </div>
           <div className="md:w-[60%] font-normal">
-            <h1 className="text-[#33accc] md:text-[25px] text-[18px]">Corporate Responsibility</h1>
+            <h1 className="text-[#33accc] md:text-[25px] text-[18px]">
+              Corporate Responsibility
+            </h1>
             <p className="leading-loose text-[#999] md:text-[16px] text-[14px]">
               We are developing responsible initiatives and efforts across the
               globe, at our sites and with our people. Our aim is to serve the
@@ -292,7 +296,9 @@ export default function Servicepage() {
 
         <div className="flex gap-5 md:flex-row flex-col py-10">
           <div className="md:w-[60%] font-normal">
-            <h1 className="text-[#33accc] md:text-[25px] text-[18px]">Quality Customer Service is what we offer</h1>
+            <h1 className="text-[#33accc] md:text-[25px] text-[18px]">
+              Quality Customer Service is what we offer
+            </h1>
             <p className="leading-loose text-[#999] md:text-[16px] text-[14px]">
               Our highly trained customer service professionals ensure that
               every client is thoroughly satisfied. By providing customized
@@ -303,14 +309,15 @@ export default function Servicepage() {
               certificates and artifact for exports.
             </p>
           </div>
-           <div className="w-full md:w-[40%] flex items-center justify-center mb-8 md:mb-0 ">
-          <Image
-          width={200}
-          height={200}
-            src="/images/service3.jpg"
-            alt="Your Alt Text"
-            className="w-full md:h-auto h-50 object-cover" />
-        </div>
+          <div className="w-full md:w-[40%] flex items-center justify-center mb-8 md:mb-0 ">
+            <Image
+              width={200}
+              height={200}
+              src="/images/service3.jpg"
+              alt="Your Alt Text"
+              className="w-full md:h-auto h-50 object-cover"
+            />
+          </div>
         </div>
       </section>
     </div>
