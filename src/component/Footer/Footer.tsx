@@ -74,7 +74,7 @@ info@martocourierltd.com</Link></li>
 
         {/* Bottom Bar */}
         <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm">
-          © 2021 Marto courier service Ltd | All Rights Reserved.
+          © 2021 Marto Shipping service Ltd | All Rights Reserved.
         </div>
       </div>
   );

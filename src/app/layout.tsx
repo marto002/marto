@@ -2,14 +2,14 @@
 "use client";
 
 import Image from "next/image";
-import "./globals.css";
+//import "./globals.css";
 import { useRouter } from "next/navigation";
 import Navbar from "@/component/Navbar/Navbar";
 import { usePathname } from "next/navigation";
 import { Content } from "@/component/Content/content";
 import Slider from "react-slick";
-import "slick-carousel/slick/slick.css";
-import "slick-carousel/slick/slick-theme.css";
+//import "slick-carousel/slick/slick.css";
+//import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
 import Footer from "@/component/Footer/Footer";
 import { exo2 } from "./fonts";
@@ -32,8 +32,8 @@ export default function RootLayout({ children, isAboutPage }: FirstSectionProps)
   let contentTex3='';
   
     if (pathname === '/about') {
-      contentText1 = 'About Marto Courier LTD.'
-      contentTex2='Marto Courier International Services invented express distribution and is the industry’s global leader, providing rapid, reliable, time-definite delivery to more than 220 countries and territories, connecting markets that comprise more than 90 percent of the world’s gross domestic product within one to three business days.';
+      contentText1 = 'About Marto Shipping LTD.'
+      contentTex2='Marto Shipping International Services invented express distribution and is the industry’s global leader, providing rapid, reliable, time-definite delivery to more than 220 countries and territories, connecting markets that comprise more than 90 percent of the world’s gross domestic product within one to three business days.';
     } else if (pathname === '/contact') {
       contentText1 = 'Be In Touch With Us'
       contentTex2=' The customer’s perception is our reality.';
@@ -41,18 +41,18 @@ export default function RootLayout({ children, isAboutPage }: FirstSectionProps)
       contentText1 = ' More customers, more '
    contentTex2=   'revenue, more quickly.';
     }else if (pathname === '/') {
-      contentText1 = ' Marto Courier '
+      contentText1 = ' Marto Shipping '
         contentTex3="International Service"
       contentTex2=   'Put in your Track I.D and start Tracking your Package Instantly.'
   ;
     }else if (pathname &&pathname.startsWith('/ourwork')) { 
-      contentText1 = ' Marto Courier '
+      contentText1 = ' Marto Shipping '
       contentTex3="International Service"
       contentTex2=   'We Offer International express deliveries; global freight forwarding by air, sea, road and rail;';
  
     }
     else if (pathname &&pathname.startsWith('/services')) { 
-      contentText1 = 'Marto Courier '
+      contentText1 = 'Marto Shipping '
       contentTex3="International Service"
       contentTex2=   'Service to others is the rent you pay for your room here on earth.'
    ;
