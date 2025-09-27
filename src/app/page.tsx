@@ -11,12 +11,11 @@ export default function Home() {
   const router = useRouter();
   return (
     <div className="bg-white">
-
-     <Script
-            id="chatra-script"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `
+      <Script
+        id="chatra-script"
+        strategy="afterInteractive"
+        dangerouslySetInnerHTML={{
+          __html: `
                 (function(d, w, c) {
                     w.ChatraID = 'jJHt32jWGnB34MF7B';
                     var s = d.createElement('script');
@@ -28,8 +27,8 @@ export default function Home() {
                     if (d.head) d.head.appendChild(s);
                 })(document, window, 'Chatra');
               `,
-            }}
-          />
+        }}
+      />
       <section className="flex flex-col items-center justify-center w-full  mx-auto  bg-white md:py-20 py-6 px-6  ">
         <p className="text-[#000] text-[23px]  md:text-[50px] text-center">
           Our Specialities
@@ -90,12 +89,10 @@ export default function Home() {
 
       <section className="bg-white justify-center text-center items-center px-25 md:py-[100px] py-10 md:px-0 flex flex-col gap-5">
         <div className="bg-[#33accc] justify-center items-center p-5 rounded-full flex md:w-[70px] w-[50px] md:h-[70px] h-[50px]">
-          {" "}
           <FaTrophy color="#fff" size={30} />
         </div>
 
         <h1 className="text-[#000] md:text-[50px] text-[19px] ">
-          {" "}
           Always Delivering Best Of Our Services
         </h1>
 
@@ -127,7 +124,6 @@ export default function Home() {
 
       <section className="bg-white justify-center text-center items-center px-25  md:py-[100px] py-10 flex flex-col gap-5">
         <div className="bg-[#33accc] justify-center items-center p-5 rounded-full flex md:w-[70px] w-[50px] md:h-[70px] h-[50px]">
-          {" "}
           <BsEmojiSmile color="#fff" size={30} />
         </div>
 

@@ -54,7 +54,7 @@ export default function Signin() {
 
       login("user");
       alert(result.message);
-/*
+      /*
       if (userEmail) {
         const uRes = await fetch(`/api/users/${encodeURIComponent(userEmail)}`);
         const uJson = await uRes.json();
@@ -68,13 +68,12 @@ export default function Signin() {
       }
 */
 
-if (result?.user?.email) {
-  localStorage.setItem("userEmail", result.user.email);
-}
+      if (result?.user?.email) {
+        localStorage.setItem("userEmail", result.user.email);
+      }
 
-login("user"); // keep your login state
-alert(result.message);
-
+      login("user"); // keep your login state
+      alert(result.message);
 
       if (isLogin) router.push("/"); // redirect user if needed
     } catch (err: any) {
@@ -86,8 +85,7 @@ alert(result.message);
       }
     }
   };
-const [serverError, setServerError] = useState<string | null>(null);
-
+  const [serverError, setServerError] = useState<string | null>(null);
 
   return (
     <div className="min-h-screen flex items-center justify-center ">
@@ -113,44 +111,41 @@ const [serverError, setServerError] = useState<string | null>(null);
             <p className="text-red-500 text-sm">{errors.email.message}</p>
           )}
 
-         
-<div>
- 
-           <input
-  type="password"
-  placeholder="Password"
-  {...register("password", { 
-    required: "Password is required",
-    pattern: {
-      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
-      message: "Password must be at least 8 chars, include uppercase, lowercase, number & symbol"
-    }
-  })}
-  className="w-full px-4 py-2 border rounded border-black"
-/>
+          <div>
+            <input
+              type="password"
+              placeholder="Password"
+              {...register("password", {
+                required: "Password is required",
+                pattern: {
+                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
+                  message:
+                    "Password must be at least 8 chars, include uppercase, lowercase, number & symbol",
+                },
+              })}
+              className="w-full px-4 py-2 border rounded border-black"
+            />
 
-          {errors.password && (
-            <p className="text-red-500 text-sm">{errors.password.message}</p>
-          )}
+            {errors.password && (
+              <p className="text-red-500 text-sm">{errors.password.message}</p>
+            )}
 
-          {!isLogin && (
-           
-             <input
-  type="password"
-  placeholder="Confirm password"
-  {...register("confirmPassword", { 
-    required: "Confirm password is required ",
-    pattern: {
-      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
-      message: " ConfirmPassword must be at least 8 chars, include uppercase, lowercase, number & symbol"
-    }
-  })}
-  className="w-full px-4 py-2 border rounded border-black"
-/>
-
-          )}
-
-</div>
+            {!isLogin && (
+              <input
+                type="password"
+                placeholder="Confirm password"
+                {...register("confirmPassword", {
+                  required: "Confirm password is required ",
+                  pattern: {
+                    value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
+                    message:
+                      " ConfirmPassword must be at least 8 chars, include uppercase, lowercase, number & symbol",
+                  },
+                })}
+                className="w-full px-4 py-2 border rounded border-black"
+              />
+            )}
+          </div>
           <button
             type="submit"
             className="w-full bg-[#33accc] text-white py-2 rounded text-2xl font-semibold"
@@ -160,7 +155,7 @@ const [serverError, setServerError] = useState<string | null>(null);
         </form>
 
         <p className="text-sm text-center mt-4 text-black">
-          {isLogin ? "Don't have an account?" : "Already have an account?"}{" "}
+          {isLogin ? "Don't have an account?" : "Already have an account?"}
           <button
             onClick={() => setIsLogin(!isLogin)}
             className="text-[#33accc] underline"
