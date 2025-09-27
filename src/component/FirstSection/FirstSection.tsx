@@ -3,8 +3,8 @@
 import React, { useRef } from "react";
 import { useRouter } from "next/navigation";
 import Slider from "react-slick";
-//import "slick-carousel/slick/slick.css";
-//import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import SecondHero from "./carousel/SecondHero";
 import ThirdHero from "./carousel/ThirdHero";
 import FirstHero from "./carousel/FirstHero";
