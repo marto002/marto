@@ -2,14 +2,14 @@
 "use client";
 
 import Image from "next/image";
-//import "./globals.css";
+import "./globals.css";
 import { useRouter } from "next/navigation";
 import Navbar from "@/component/Navbar/Navbar";
 import { usePathname } from "next/navigation";
 import { Content } from "@/component/Content/content";
 import Slider from "react-slick";
-//import "slick-carousel/slick/slick.css";
-//import "slick-carousel/slick/slick-theme.css";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
 import { useRef } from "react";
 import Footer from "@/component/Footer/Footer";
 import { exo2 } from "./fonts";
