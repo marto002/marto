@@ -42,7 +42,7 @@ export default function Footer() {
               <li className="flex items-center gap-2"><FiMapPin size={30} /> Airway Blvd, California City, CA 93505</li>
               <li className="flex items-center gap-2"><FiPhone size={30}/> 815-575-8438 | 725-333-6078</li>
               <li className="flex items-center gap-2 "><FiMail size={30}/> 
-<Link href={"info@martoshipping.com"}>
+<Link href={"mailto:info@martoshipping.com"}>
       info@martoshipping.com</Link></li>
             </ul>
           </div>
