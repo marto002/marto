@@ -10,6 +10,7 @@ import { Content } from "@/component/Content/content";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
+import { Analytics } from "@vercel/analytics/next"
 import { useRef } from "react";
 import Footer from "@/component/Footer/Footer";
 import { exo2 } from "./fonts";
@@ -151,6 +152,7 @@ export default function RootLayout({ children, isAboutPage }: FirstSectionProps)
 
 
      {children}
+     <Analytics />
      <Footer/>
     
       </body>

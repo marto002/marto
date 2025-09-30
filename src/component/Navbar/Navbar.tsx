@@ -48,7 +48,7 @@ const Navbar = () => {
 
         <div className="flex  items-center justify-center   ">
           <ul className="bg-[#f8f8f8] hidden md:flex items-center gap-0 text-sm  font-medium uppercase whitespace-nowrap ">
-            {links.map((link) => (
+            {links.map((link,index) => (
               <li
                 className={`${
                   pathname === link.href
@@ -57,7 +57,7 @@ const Navbar = () => {
                 }hover:text-white hover:bg-[#33accc] tex justify-center text-center  flex items-center py-4 px-2`}
               >
                 {link.icon}
-                <Link key={link.href} href={link.href}>
+                <Link key={index} href={link.href}>
                   {link.label}
                 </Link>
               </li>
@@ -85,14 +85,14 @@ const Navbar = () => {
         
         <div >
             <ul className="md:hidden flex flex-col   pb-4 bg-[#e4e4e4] h-[26rem] mx-4  font-normal text-black">
-              {links.map((link) => (
-                <li
+              {links.map((link,index) => (
+                <li 
                   className={`${pathname === link.href
                       ? "bg-[#33accc] text-white "
                       : " text-[#777] "}hover:text-white hover:bg-[#33accc] text-[14px] justify-center text-center  flex items-center py-4 px-2`}
                 >
                   {link.icon}
-                  <Link key={link.href} href={link.href}>
+                  <Link key={index} href={link.href}>
                     {link.label}
                   </Link>
                 </li>
