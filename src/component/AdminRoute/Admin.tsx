@@ -1,18 +1,8 @@
 "use client";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 
 export default function Admin() {
   const [activeTab, setActiveTab] = useState("USERS");
-  const [order] = useState({
-    code: "365jQwb9803",
-    product: "Covercoco 250gm Serum",
-    qty: 1,
-    price: 450,
-    status: "Pending",
-    orderStatus: "Done",
-    payout: "Active",
-  });
 
   const [users, setUsers] = useState<any[]>([]);
 
@@ -21,6 +11,33 @@ export default function Admin() {
       .then((res) => res.json())
       .then((data) => setUsers(data.users));
   }, []);
+
+  const [selectedStatus, setSelectedStatus] = useState<string>("None");
+
+  const handleStatusChange = async (userId: string, newStatus: string) => {
+    try {
+      const res = await fetch(`/api/users/${userId}/status`, {
+        method: "PUT",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ status: newStatus }),
+      });
+
+      if (res.ok) {
+        setUsers((prev) =>
+          prev.map((u) => (u._id === userId ? { ...u, status: newStatus } : u))
+        );
+        setSelectedStatus(newStatus); // 👈 save selected status
+        localStorage.setItem(`status-${userId}`, newStatus);
+      }
+    } catch (error) {
+      console.error("Error updating status:", error);
+    }
+  };
+
+  const [showSelectFor, setShowSelectFor] = useState<string | null>(null);
+
   return (
     <div className="bg-white rounded-md p-5  min-h-screen">
       <div className=" text-black justify-center text-center">
@@ -30,7 +47,7 @@ export default function Admin() {
         {/* Tabs */}
 
         <div className="flex flex-wrap gap-4 border-b  border-gray-200 mb-6   md:flex-col flex-row ">
-          {["USERS", "setTrack order", "Security"].map((tab) => (
+          {["USERS", "Security"].map((tab) => (
             <button
               key={tab}
               onClick={() => setActiveTab(tab)}
@@ -51,8 +68,7 @@ export default function Admin() {
         <div className="px-5">
           {activeTab === "USERS" && (
             <div className="flex flex-col  gap-5 text-black">
-             <p className="font-bold text-[[#343C6A]]">USERS THATR SIGNUP</p>
-              
+              <p className="font-bold text-[[#343C6A]]">USERS THAT SIGNUP</p>
 
               <div className="overflow-x-auto mt-6">
                 <table className="min-w-full border border-gray-300 rounded-lg">
@@ -61,6 +77,7 @@ export default function Admin() {
                       <th className="px-4 py-2 border">Email</th>
                       <th className="px-4 py-2 border">Role</th>
                       <th className="px-4 py-2 border">Tracking Numbers</th>
+                      <th className="px-4 py-2 border">SHOW TRACKING</th>
                       <th className="px-4 py-2 border">Signup Date</th>
                     </tr>
                   </thead>
@@ -71,13 +88,54 @@ export default function Admin() {
                         <td className="px-4 py-2 border">{user.role}</td>
 
                         <td className="px-4 py-2 border">
-  {user.trackingId ? (
-    <span>{user.trackingId}</span>
-  ) : (
-    <span className="text-gray-400">No tracking yet</span>
-  )}
-</td>
+                          {user.trackingId ? (
+                            <span>{user.trackingId}</span>
+                          ) : (
+                            <span className="text-gray-400">
+                              No tracking yet
+                            </span>
+                          )}
+                        </td>
 
+                        <td className="px-4 py-2 border">
+                          {showSelectFor === user._id ? (
+                            <select
+                              value={user.status || "None"}
+                              onChange={(e) => {
+                                handleStatusChange(user._id, e.target.value);
+                                setShowSelectFor(null);
+                              }}
+                              className="border px-2 py-1 rounded"
+                              autoFocus
+                            >
+                              {[
+                                "None",
+                                "Placed",
+                                "Packed",
+                                "Shipped",
+                                "Delivered",
+                              ].map((step) => (
+                                <option key={step} value={step}>
+                                  {step}
+                                </option>
+                              ))}
+                            </select>
+                          ) : user.status ? (
+                            <span
+                              className="px-2 py-1 bg-green-100 text-green-800 rounded cursor-pointer"
+                              onClick={() => setShowSelectFor(user._id)}
+                            >
+                              {user.status}
+                            </span>
+                          ) : (
+                            <button
+                              onClick={() => setShowSelectFor(user._id)}
+                              className="bg-blue-500 text-white px-3 py-1 rounded"
+                            >
+                              Change Status
+                            </button>
+                          )}
+                        </td>
 
                         <td className="px-4 py-2 border">
                           {new Date(user.createdAt).toLocaleDateString()}
@@ -90,51 +148,8 @@ export default function Admin() {
             </div>
           )}
 
-          {activeTab === "setTrack order" && (
-            <div className="text-[#343C6A]">
-              <div className="max-w-4xl mx-auto  p-6">
-                {/* Track Order */}
-                <h2 className="text-lg font-semibold mb-4"></h2>
-                <p className="text-sm text-gray-600 mb-4">
-                 
-                </p>
-
-              {/*  <div className="flex items-center justify-between mb-4">
-                  {["Placed", "Packed", "Shipped", "Delivered"].map(
-                    (step, i) => (
-                      <div key={i} className="flex-1 flex items-center">
-                        <div
-                          className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                            i < 3 ? "bg-[#33accc] text-white" : "bg-gray-300"
-                          }`}
-                        >
-                          ✓
-                        </div>
-                        {i < 3 && (
-                          <div className="flex-1 h-1 bg-[#33accc]"></div>
-                        )}
-                        {i === 2 && (
-                          <div className="flex-1 h-1 bg-gray-300"></div>
-                        )}
-                      </div>
-                    )
-                  )}
-                </div>*/}
-
-                <p className="text-sm text-gray-600">
-                   <br />
-                  <span className="text-gray-400">
-                   
-                  </span>
-                </p>
-
-                {/* Orders Table */}
-
-              </div>
-            </div>
-          )}
           {activeTab === "Security" && (
-            <div className="text-[#343C6A]">Security content goes here...</div>
+            <div className="text-[#343C6A]"> Security coming soon ...</div>
           )}
         </div>
       </div>

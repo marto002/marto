@@ -4,6 +4,7 @@ import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useAuthStore } from "./login";
 import { useRouter } from "next/navigation";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 type LoginFormInputs = {
   email: string;
@@ -20,6 +21,7 @@ export default function Signin() {
   const router = useRouter();
   const [isLogin, setIsLogin] = useState(true);
   const login = useAuthStore((state) => state.login);
+const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -31,7 +33,7 @@ export default function Signin() {
     const { email, password } = data;
 
     // 🔹 Admin stays hardcoded
-    if (email === "admin@site.com" && password === "admin123") {
+    if (email === "admin@site.com" && password === "Admin$123") {
       login("admin");
       router.push("/admin");
       alert("Admin login successful ✅");
@@ -54,20 +56,7 @@ export default function Signin() {
 
       login("user");
       alert(result.message);
-      /*
-      if (userEmail) {
-        const uRes = await fetch(`/api/users/${encodeURIComponent(userEmail)}`);
-        const uJson = await uRes.json();
-        if (uRes.ok) {
-          // do something with uJson.user
-          console.log("Full user:", uJson.user);
-          // optionally store in context or localStorage (avoid storing password)
-        } else {
-          console.warn("Failed to fetch user details:", uJson);
-        }
-      }
-*/
-
+     
       if (result?.user?.email) {
         localStorage.setItem("userEmail", result.user.email);
       }
@@ -105,46 +94,51 @@ export default function Signin() {
             type="email"
             placeholder="Email"
             {...register("email", { required: "Email is required" })}
-            className="w-full px-4 py-2 border rounded text-black border-black"
-          />
+            className="w-full px-4 py-2 border rounded text-black border-black" />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
           )}
 
-          <div>
-            <input
-              type="password"
-              placeholder="Password"
-              {...register("password", {
-                required: "Password is required",
-                pattern: {
-                  value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
-                  message:
-                    "Password must be at least 8 chars, include uppercase, lowercase, number & symbol",
-                },
-              })}
-              className="w-full px-4 py-2 border rounded border-black"
-            />
-
-            {errors.password && (
-              <p className="text-red-500 text-sm">{errors.password.message}</p>
-            )}
-
-            {!isLogin && (
+          <div className="flex flex-col gap-4">
+            <div className="relative w-full">
               <input
-                type="password"
-                placeholder="Confirm password"
-                {...register("confirmPassword", {
-                  required: "Confirm password is required ",
+               
+                 type={showPassword ? "text" : "password"}
+                placeholder="Password"
+                {...register("password", {
+                  required: "Password is required",
                   pattern: {
                     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
-                    message:
-                      " ConfirmPassword must be at least 8 chars, include uppercase, lowercase, number & symbol",
+                    message: "Password must be at least 8 chars, include uppercase, lowercase, number & symbol",
                   },
                 })}
-                className="w-full px-4 py-2 border rounded border-black"
-              />
-            )}
+                className="w-full px-4 py-2 border rounded border-black text-black" />
+              <div
+                className="absolute inset-y-0 right-3 flex items-center cursor-pointer text-black"
+                onClick={() => setShowPassword((prev) => !prev)}
+              >
+                {showPassword ? <FaEyeSlash /> : <FaEye />}
+              </div>
+              {errors.password && (
+                <p className="text-red-500 text-sm">{errors.password.message}</p>
+              )}
+            </div>
+            <div className="relative w-full text-black">
+              {!isLogin && (
+                <input
+                  
+                   type={showPassword ? "text" : "password"}
+                  placeholder="Confirm password"
+                  {...register("confirmPassword", {
+                    required: "Confirm password is required ",
+                    pattern: {
+                      value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
+                      message: " ConfirmPassword must be at least 8 chars, include uppercase, lowercase, number & symbol",
+                    },
+                  })}
+                  className="w-full px-4 py-2 border rounded border-black text-black" />
+              )}
+            </div>
           </div>
           <button
             type="submit"
@@ -165,5 +159,6 @@ export default function Signin() {
         </p>
       </div>
     </div>
+   
   );
 }
