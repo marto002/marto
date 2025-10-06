@@ -28,7 +28,7 @@ export default function Admin() {
         setUsers((prev) =>
           prev.map((u) => (u._id === userId ? { ...u, status: newStatus } : u))
         );
-        setSelectedStatus(newStatus); // 👈 save selected status
+        setSelectedStatus(newStatus); // 
         localStorage.setItem(`status-${userId}`, newStatus);
       }
     } catch (error) {

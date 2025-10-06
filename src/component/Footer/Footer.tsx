@@ -1,5 +1,4 @@
 import React from "react";
-import { BiLogoGooglePlus, BiSolidHandRight } from "react-icons/bi";
 import { useRouter } from "next/navigation";
 import {
   FaFacebookF,
@@ -7,7 +6,6 @@ import {
   FaLinkedinIn,
   FaTwitter,
 } from "react-icons/fa";
-import { BsTwitterX } from "react-icons/bs";
 import { FiMail, FiMapPin, FiPhone } from "react-icons/fi";
 import Link from "next/link";
 

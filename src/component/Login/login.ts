@@ -3,12 +3,6 @@ import { create } from 'zustand';
 type Role = "admin" | "user" | null;
 
 type AuthState = {
-//  isLoggedIn: boolean;
-  //login: () => void;
-  //logout: () => void;
-
-
-
 
   isLoggedIn: boolean;
   role: Role;

@@ -25,6 +25,3 @@ export async function connectDB() {
 
 
 
-
-
-//mongodb+srv://olubiyisther_db_user:0czCPpNNq6Y0GhOL@yinka.mudaqxa.mongodb.net/

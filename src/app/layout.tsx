@@ -10,7 +10,6 @@ import { Content } from "@/component/Content/content";
 import Slider from "react-slick";
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
-import { Analytics } from "@vercel/analytics/next"
 import { useRef } from "react";
 import Footer from "@/component/Footer/Footer";
 import { exo2 } from "./fonts";
@@ -152,7 +151,7 @@ export default function RootLayout({ children, isAboutPage }: FirstSectionProps)
 
 
      {children}
-     <Analytics />
+     
      <Footer/>
     
       </body>
@@ -161,42 +160,3 @@ export default function RootLayout({ children, isAboutPage }: FirstSectionProps)
 }
 
 
-
-
-{/*
-
-{showLogoAndContent && (
-  <div className={pathname==="/" ? "relative md:h-[600px] h-[21.2rem]":"relative md:h-[450px] h-[17.2rem]"}> 
-    <Slider ref={sliderRef} {...settings} className="fixed inset-0">
-      {slides.map((item, index) => (
-        <div key={index} className={pathname==="/"?"relative md:h-[600px] h-[21rem]  ":"relative md:h-[450px] h-[17rem]"}> 
-         
-          <Image
-            src={item.image}
-            alt="Background"
-            fill
-            className= "object-cover "
-            priority
-          />
-        
-          <div className="absolute inset-0 bg-gray-700 opacity-20"></div>
-        </div>
-      ))}
-    </Slider>
-
- 
-    <div className="absolute inset-0 flex flex-col items-center justify-center text-center md:px-4  ">
-      <Content
-        text={contentText1}
-        text2={contentTex2}
-        text3={contentTex3}
-        pathname={pathname}
-      
-      />
-    </div>
-  </div>
-)}
-
-
-
-*/}

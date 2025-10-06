@@ -15,7 +15,6 @@ const user: User | null = {
 export default function Trackorder() {
   const [activeTab, setActiveTab] = useState("Trackorder");
 
-
   const [trackingId, setTrackingId] = useState<string>("");
 
   useEffect(() => {
@@ -46,7 +45,7 @@ export default function Trackorder() {
   const [status, setStatus] = useState<string | null>(null);
 
   useEffect(() => {
-    const email = localStorage.getItem("userEmail"); 
+    const email = localStorage.getItem("userEmail");
     if (!email) return;
 
     const fetchStatus = async () => {
@@ -62,7 +61,6 @@ export default function Trackorder() {
     fetchStatus();
   }, []);
 
- 
   const visibleStatuses = ["Packed", "Placed", "Delivered", "Shipped"];
 
   return (
@@ -107,19 +105,14 @@ export default function Trackorder() {
                     )}
                   </p>
 
-                 
-
-                 
-                 
-
-                 
                   <p className="text-xl text-[#33accc]">
                     <span className="text-gray-700 font-bold">
                       your Tracking order is : {trackingId}
-                    </span><br />
-                     Your order would be tracked here.... 
+                    </span>
+                    <br />
+                    Your order would be tracked here....
                   </p>
- <div  className="mt-6 ">
+                  <div className="mt-6 ">
                     {visibleStatuses.includes(status || "") ? (
                       <div className="flex items-center justify-between mb-4">
                         {["Placed", "Packed", "Shipped", "Delivered"].map(
@@ -147,13 +140,11 @@ export default function Trackorder() {
                     ) : null}
                   </div>
                 </div>
-                
               </div>
             )}
             {activeTab === "Security" && (
               <div className="text-[#343C6A] ml-4">
                 Security coming soon ...
-                
               </div>
             )}
           </div>
