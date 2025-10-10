@@ -18,7 +18,7 @@ type User = {
   role?: string;
 };
 
-type AuthStore = {
+type AuthStoree = {
   isLoggedIn: boolean;
   currentUser: User | null;
   setIsLoggedIn: (status: boolean) => void;
@@ -26,7 +26,7 @@ type AuthStore = {
   logout: () => void;
 };
 
-export const useAuthStore = create<AuthStore>()(
+export const useAuthStoree = create<AuthStoree>()(
   persist(
     (set) => ({
       isLoggedIn: false,

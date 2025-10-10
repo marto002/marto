@@ -1,7 +1,7 @@
 
 
 
-
+import { serialize } from "cookie";
 import { NextApiRequest, NextApiResponse } from "next";
 import bcrypt from "bcryptjs";
 import { connectDB } from "@/lib/mongodb";
@@ -25,6 +25,19 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
     if (!isMatch) {
       return res.status(401).json({ message: "Invalid credentials" });
     }
+    const cookie = serialize("userSession", JSON.stringify({
+      email: user.email,
+      role: user.role,
+    }), {
+      httpOnly: true,
+      secure: process.env.NODE_ENV === "production",
+      sameSite: "strict",
+      maxAge: 60 * 60 * 24, // 1 day
+      path: "/",
+    });
+
+    res.setHeader("Set-Cookie", cookie);
+
 
     return res.status(200).json({
       message: "Login successful",

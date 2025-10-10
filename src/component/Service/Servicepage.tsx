@@ -2,6 +2,7 @@ import React from "react";
 import { FaBraille, FaTrophy } from "react-icons/fa";
 import Horixontalrule from "../Content/horixontalrule";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Servicepage() {
   return (
@@ -70,6 +71,7 @@ export default function Servicepage() {
                 to repairs, to storage; mail deliveries worldwide is everything
                 Marto Courier ltd does.
               </p>
+              <Link href={"/getquote"}>Get a quote</Link>
             </div>
           </div>
 

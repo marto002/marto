@@ -1,10 +1,10 @@
 "use client";
-
 import { useForm } from "react-hook-form";
 import { useState } from "react";
 import { useAuthStore } from "./login";
 import { useRouter } from "next/navigation";
 import { FaEye, FaEyeSlash } from "react-icons/fa";
+import { useAuthStoree } from "../Ustestore";
 
 type LoginFormInputs = {
   email: string;
@@ -21,7 +21,7 @@ export default function Signin() {
   const router = useRouter();
   const [isLogin, setIsLogin] = useState(true);
   const login = useAuthStore((state) => state.login);
-const [showPassword, setShowPassword] = useState(false);
+  const [showPassword, setShowPassword] = useState(false);
 
   const {
     register,
@@ -29,7 +29,7 @@ const [showPassword, setShowPassword] = useState(false);
     formState: { errors },
   } = useForm<LoginFormInputs | SignupFormInputs>();
 
-  const onSubmit = async (data: any) => {
+  const onSubmit9 = async (data: any) => {
     const { email, password } = data;
 
     // 🔹 Admin stays hardcoded
@@ -56,15 +56,21 @@ const [showPassword, setShowPassword] = useState(false);
 
       login("user");
       alert(result.message);
-     
+
       if (result?.user?.email) {
         localStorage.setItem("userEmail", result.user.email);
       }
 
       login("user"); // keep your login state
       alert(result.message);
+      const redirectPath = localStorage.getItem("redirectAfterLogin");
 
-      if (isLogin) router.push("/"); // redirect user if needed
+      if (redirectPath) {
+        localStorage.removeItem("redirectAfterLogin");
+        router.push(redirectPath);
+      } else if (isLogin) {
+        router.push("/");
+      }
     } catch (err: any) {
       alert(err.message);
       if (err instanceof Error) {
@@ -74,6 +80,52 @@ const [showPassword, setShowPassword] = useState(false);
       }
     }
   };
+
+  const onSubmit = async (data: any) => {
+    const { email, password } = data;
+    const { setIsLoggedIn, setCurrentUser } = useAuthStoree.getState();
+
+    if (email === "admin@site.com" && password === "Admin$123") {
+      // setIsLoggedIn(true);
+      //setCurrentUser({ email, role: "admin" });
+      login("admin");
+      router.push("/admin");
+      alert("Admin login successful ✅");
+      return;
+    }
+
+    try {
+      const endpoint = isLogin ? "/api/auth/login" : "/api/auth/signup";
+      const res = await fetch(endpoint, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ email, password }),
+      });
+
+      const result = await res.json();
+      if (!res.ok) throw new Error(result.error || "User already exists");
+
+      // ✅ Save user state in Zustand
+      setIsLoggedIn(true);
+      setCurrentUser({ email: result.user.email, role: "user" });
+
+      localStorage.setItem("userEmail", result.user.email);
+      alert(result.message);
+
+      // ✅ Redirect back to Get Quotes if needed
+      const redirectPath = localStorage.getItem("redirectAfterLogin");
+      if (redirectPath) {
+        localStorage.removeItem("redirectAfterLogin");
+        router.push(redirectPath);
+      } else {
+        router.push("/");
+      }
+    } catch (err: any) {
+      alert(err.message);
+      setServerError(err.message);
+    }
+  };
+
   const [serverError, setServerError] = useState<string | null>(null);
 
   return (
@@ -94,7 +146,8 @@ const [showPassword, setShowPassword] = useState(false);
             type="email"
             placeholder="Email"
             {...register("email", { required: "Email is required" })}
-            className="w-full px-4 py-2 border rounded text-black border-black" />
+            className="w-full px-4 py-2 border rounded text-black border-black"
+          />
           {errors.email && (
             <p className="text-red-500 text-sm">{errors.email.message}</p>
           )}
@@ -102,17 +155,18 @@ const [showPassword, setShowPassword] = useState(false);
           <div className="flex flex-col gap-4">
             <div className="relative w-full">
               <input
-               
-                 type={showPassword ? "text" : "password"}
+                type={showPassword ? "text" : "password"}
                 placeholder="Password"
                 {...register("password", {
                   required: "Password is required",
                   pattern: {
                     value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
-                    message: "Password must be at least 8 chars, include uppercase, lowercase, number & symbol",
+                    message:
+                      "Password must be at least 8 chars, include uppercase, lowercase, number & symbol",
                   },
                 })}
-                className="w-full px-4 py-2 border rounded border-black text-black" />
+                className="w-full px-4 py-2 border rounded border-black text-black"
+              />
               <div
                 className="absolute inset-y-0 right-3 flex items-center cursor-pointer text-black"
                 onClick={() => setShowPassword((prev) => !prev)}
@@ -120,23 +174,26 @@ const [showPassword, setShowPassword] = useState(false);
                 {showPassword ? <FaEyeSlash /> : <FaEye />}
               </div>
               {errors.password && (
-                <p className="text-red-500 text-sm">{errors.password.message}</p>
+                <p className="text-red-500 text-sm">
+                  {errors.password.message}
+                </p>
               )}
             </div>
             <div className="relative w-full text-black">
               {!isLogin && (
                 <input
-                  
-                   type={showPassword ? "text" : "password"}
+                  type={showPassword ? "text" : "password"}
                   placeholder="Confirm password"
                   {...register("confirmPassword", {
                     required: "Confirm password is required ",
                     pattern: {
                       value: /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$/,
-                      message: " ConfirmPassword must be at least 8 chars, include uppercase, lowercase, number & symbol",
+                      message:
+                        " ConfirmPassword must be at least 8 chars, include uppercase, lowercase, number & symbol",
                     },
                   })}
-                  className="w-full px-4 py-2 border rounded border-black text-black" />
+                  className="w-full px-4 py-2 border rounded border-black text-black"
+                />
               )}
             </div>
           </div>
@@ -159,6 +216,5 @@ const [showPassword, setShowPassword] = useState(false);
         </p>
       </div>
     </div>
-   
   );
 }

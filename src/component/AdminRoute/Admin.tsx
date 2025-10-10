@@ -1,10 +1,30 @@
 "use client";
 import { useEffect, useState } from "react";
-
+interface Parcel {
+  from: string;
+  to: string;
+  weight: number;
+  length: number;
+  width: number;
+  height: number;
+  deliveryDate:number;
+  comment:string;
+  isResidential: boolean;
+}
+interface User {
+  _id: string;
+  email: string;
+  trackingId: string;
+  role:string;
+  status:string;
+  parcels?: Parcel[];
+  createdAt:number;
+}
 export default function Admin() {
   const [activeTab, setActiveTab] = useState("USERS");
 
-  const [users, setUsers] = useState<any[]>([]);
+  //const [users, setUsers] = useState<any[]>([]);
+ const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     fetch("/api/admin/users")
@@ -39,11 +59,11 @@ export default function Admin() {
   const [showSelectFor, setShowSelectFor] = useState<string | null>(null);
 
   return (
-    <div className="bg-white rounded-md p-5  min-h-screen">
-      <div className=" text-black justify-center text-center">
+    <div className="bg-[#445370] rounded-md p-5  min-h-screen">
+      <div className=" text-white justify-center text-center">
         <h1 className="text-3xl font-bold">Welcome, Admin 🚀</h1>
       </div>
-      <div className="flex gap-5 md:flex-row flex-col">
+      <div className="flex gap-5 md:flex-row flex-col ">
         {/* Tabs */}
 
         <div className="flex flex-wrap gap-4 border-b  border-gray-200 mb-6   md:flex-col flex-row ">
@@ -54,7 +74,7 @@ export default function Admin() {
               className={`pb-2 text-base font-semibold cursor-pointer ${
                 activeTab === tab
                   ? "border-b-2 border-[#343C6A] text-[#232323] "
-                  : "text-[#718EBF]"
+                  : "text-white"
               }`}
             >
               {tab}
@@ -67,23 +87,24 @@ export default function Admin() {
 
         <div className="px-5">
           {activeTab === "USERS" && (
-            <div className="flex flex-col  gap-5 text-black">
+            <div className="flex flex-col  gap-5 text-white">
               <p className="font-bold text-[[#343C6A]]">USERS THAT SIGNUP</p>
 
               <div className="overflow-x-auto mt-6">
                 <table className="min-w-full border border-gray-300 rounded-lg">
-                  <thead className="bg-gray-100">
+                  <thead className="bg-white text-black">
                     <tr>
                       <th className="px-4 py-2 border">Email</th>
                       <th className="px-4 py-2 border">Role</th>
                       <th className="px-4 py-2 border">Tracking Numbers</th>
                       <th className="px-4 py-2 border">SHOW TRACKING</th>
+                       <th className="border p-2">Parcels</th>
                       <th className="px-4 py-2 border">Signup Date</th>
                     </tr>
                   </thead>
                   <tbody>
                     {users.map((user, i) => (
-                      <tr key={i} className="hover:bg-gray-50">
+                      <tr key={i} className="hover:bg-white hover:text-black">
                         <td className="px-4 py-2 border">{user.email}</td>
                         <td className="px-4 py-2 border">{user.role}</td>
 
@@ -136,7 +157,19 @@ export default function Admin() {
                             </button>
                           )}
                         </td>
-
+ <td className="border p-2">
+                {user.parcels && user.parcels.length > 0 ? (
+                  <ul className="list-disc pl-4">
+                    {user.parcels.map((parcel, idx) => (
+                      <li key={idx}>
+                        From: {parcel.from} <br/>→ To: {parcel.to}<br/> → weight: ({parcel.weight}kg)<br/> → width: ({parcel.width}kg) <br/>→ length:({parcel.length}kg)<br/>→ height:({parcel.height}kg) <br/>→ deliveryDate:({parcel.deliveryDate}) <br/>→ comment:({parcel.comment})
+                      </li>
+                    ))}
+                  </ul>
+                ) : (
+                  <span>No parcels yet</span>
+                )}
+              </td>
                         <td className="px-4 py-2 border">
                           {new Date(user.createdAt).toLocaleDateString()}
                         </td>

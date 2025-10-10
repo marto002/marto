@@ -1,4 +1,5 @@
 import { motion } from 'framer-motion'
+import Link from 'next/link'
 import React from 'react'
 
 export const Content = ({ text,text2,text3,pathname}: { text: string,text2:string,text3:string,pathname:string }) => {
@@ -28,12 +29,13 @@ export const Content = ({ text,text2,text3,pathname}: { text: string,text2:strin
             transition={{ duration: 0.8, delay: 0.2 }}
             className={pathname==="/"?"md:text-[17px] text-[14px] font-normal max-w-[70rem]": "md:text-[17px] text-[14px] font-normal max-w-[70rem] hidden md:flex"}
           >
-            {text2}
+            {text2}  
+                
           </motion.h2>
 
+<Link href={"/getaquote"} className='bg-[#33accc]  text-white py-2 px-4 rounded-2xl'>Get a quote</Link>
+      
           
-
-         
         </div>
       
 

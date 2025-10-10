@@ -24,10 +24,11 @@ const Navbar = () => {
     { href: "/services", label: "Services" },
     { href: "/ourwork", label: "Our Work" },
     { href: "/contact", label: "Contact" },
+    
     ...(isLoggedIn
       ? [
           { href: "/trackorder", label: "Track Order", icon: <CiDeliveryTruck size={15} color="black" /> },
-          { href: "/", label: "Profile", icon: <FaLock size={12} /> },
+        // { href: "/", label: "Profile", icon: <FaLock size={12} /> },
         ]
       : [{ href: "/login", label: "Signup", icon: <FaLockOpen size={15} /> }]),
   ];
@@ -52,7 +53,7 @@ const Navbar = () => {
               <li
                 className={`${
                   pathname === link.href
-                    ? "bg-[#33accc] text-white "
+                    ? "bg-[#33accc] text-white"
                     : " text-[#777] "
                 }hover:text-white hover:bg-[#33accc] tex justify-center text-center  flex items-center py-4 px-2`}
               >
