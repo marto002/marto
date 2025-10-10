@@ -127,7 +127,7 @@ export default function Signin() {
   const [serverError, setServerError] = useState<string | null>(null);
 
   return (
-    <div className="min-h-screen flex items-center justify-center ">
+    <div className="min-h-screen flex items-center justify-center bg-[#445370] ">
       <div className="bg-white p-6 rounded-lg shadow-lg w-96">
         <h2 className="text-2xl font-semibold text-center mb-4 text-black">
           {isLogin ? "Login" : "Signup"}

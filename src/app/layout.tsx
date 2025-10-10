@@ -13,7 +13,6 @@ import { useEffect, useRef, useState } from "react";
 import Footer from "@/component/Footer/Footer";
 import { exo2 } from "./fonts";
 import { getUserSession } from "@/utils/getUserSession";
-import SessionProvider from "@/component/SessionProvider";
 
 type FirstSectionProps = {
   isAboutPage?: boolean;
@@ -37,7 +36,9 @@ export default function RootLayout({
   }, []);
 
   const pathname = usePathname();
-  const showLogoAndContent = pathname !== "/blog";
+  //const showLogoAndContent = pathname !== "/getaquote";
+  const showLogoAndContent = !["/getaquote", "/login","/trackorder","/admin"].includes(pathname ?? "");
+
   let contentText1 = "";
   let contentTex2 = "";
   let contentTex3 = "";
@@ -74,13 +75,8 @@ export default function RootLayout({
     contentTex2 =
       "Service to others is the rent you pay for your room here on earth.";
     contentTex4 = "Get a quote";
-  } else if (pathname && pathname.startsWith("/signup9")) {
-    contentText1 = " Create the growth";
-    contentTex2 = "your company is";
-  } else if (pathname && pathname.startsWith("/trackorder9")) {
-    contentText1 = " Create the growth";
-    contentTex2 = "your company is";
   }
+  
 
   const sliderRef = useRef<Slider>(null);
   const router = useRouter();
@@ -92,6 +88,8 @@ export default function RootLayout({
           { image: "/images/banner1-2.jpg" },
           { image: "/images/banner1-3.jpg" },
         ]
+         : pathname === "/login" || pathname === "/trackorder" || pathname === "/getaquote"  || pathname === "/admin" 
+    ? []
       : [{ image: "/images/banner1.jpg" }];
   const settings = {
     dots: false,

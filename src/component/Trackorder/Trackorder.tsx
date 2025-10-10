@@ -157,13 +157,13 @@ export default function Trackorder() {
                   <div className="mt-6 text-black">
                     {userData ? (
                       <>
-                        <h2 className="text-2xl flex md:flex-row flex-col font-semibold text-white">
+                        <h2 className="text-4xl flex md:flex-row flex-col font-medium text-white">
                           Welcome {userData.email}
                         </h2>
 
                         <p className="text-xl text-[#33accc]">
-                          <span className="text-white font-bold">
-                            Your Tracking order is : {userData.trackingId}
+                          <span className="text-white font-medium">
+                            Your Tracking order is : {userData.trackingId .slice(0, 13)}
                           </span>
                         </p>
 

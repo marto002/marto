@@ -16,7 +16,7 @@ export const Content = ({
   pathname: string;
 }) => {
   return (
-    <div className="justify-center leading-loose font-nunito items-center flex flex-col text-white w-full p-10">
+    <div className="justify-center leading-loose font-nunito items-center  flex flex-col text-white w-full p-10">
       <div className="flex md:flex-row flex-col gap-3">
         
         <motion.h2
