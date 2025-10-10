@@ -145,7 +145,7 @@ export default function Trackorder() {
             <div className="flex flex-col h-[28rem] gap-70 w-[1px] bg-black justify-center items-center "></div>
           </div>
 
-          <div className="px-5 ">
+          <div className="md:px-5  ">
             {activeTab === "Trackorder" && (
               <div className="text-[#343C6A]">
                 <div className="max-w-4xl mx-auto  p-6">
@@ -168,7 +168,8 @@ export default function Trackorder() {
                         </p>
 
                         {userData.parcels && userData.parcels.length > 0 ? (
-                          <table className="min-w-full border border-gray-300 text-sm text-left">
+                          <div className="overflow-x-auto ">
+                          <table className="min-w-full  border border-gray-300 text-sm text-left">
                             <thead className="bg-gray-100">
                               <tr>
                                 <th className="border px-4 py-2">#</th>
@@ -207,13 +208,13 @@ export default function Trackorder() {
                                   </td>
                                   <td className="border px-4 py-2">
                                     {parcel.height}(kg)
-                                  </td>{" "}
+                                  </td>
                                   <td className="border px-4 py-2">
                                     {parcel.length}(kg)
-                                  </td>{" "}
+                                  </td>
                                   <td className="border px-4 py-2">
                                     {parcel.width}(kg)
-                                  </td>{" "}
+                                  </td>
                                   <td className="border px-4 py-2">
                                     {parcel.comment}
                                   </td>
@@ -224,6 +225,7 @@ export default function Trackorder() {
                               ))}
                             </tbody>
                           </table>
+                          </div>
                         ) : (
                           <p>No parcels found</p>
                         )}
@@ -233,7 +235,8 @@ export default function Trackorder() {
                     )}
                   </div>
 
-               
+
+
 
                   <div className="mt-6">
                     {visibleStatuses.includes(status || "") && (

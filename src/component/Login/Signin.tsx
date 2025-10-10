@@ -86,8 +86,6 @@ export default function Signin() {
     const { setIsLoggedIn, setCurrentUser } = useAuthStoree.getState();
 
     if (email === "admin@site.com" && password === "Admin$123") {
-      // setIsLoggedIn(true);
-      //setCurrentUser({ email, role: "admin" });
       login("admin");
       router.push("/admin");
       alert("Admin login successful ✅");

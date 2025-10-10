@@ -1,11 +1,11 @@
 import React from 'react'
-import { useAuthStore } from '../Ustestore';
+import { useAuthStoree } from '../Ustestore';
 import Link from 'next/link';
 import { FaUserCircle } from 'react-icons/fa';
 
 export default function Profile() {
     
-  const { currentUser,  logout } = useAuthStore();
+  const { currentUser,  logout } = useAuthStoree();
    
   return (
      <div className="flex justify-center items-center py-18 px-10 p-8 bg-[#f7f7f7]  md:mt-20 mt-20">

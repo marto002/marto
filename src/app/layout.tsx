@@ -41,20 +41,25 @@ export default function RootLayout({
   let contentText1 = "";
   let contentTex2 = "";
   let contentTex3 = "";
+  let contentTex4 = "";
 
   if (pathname === "/about") {
     contentText1 = "About Marto Shipping LTD.";
     contentTex2 =
       "Marto Shipping International Services invented express distribution and is the industry’s global leader, providing rapid, reliable, time-definite delivery to more than 220 countries and territories, connecting markets that comprise more than 90 percent of the world’s gross domestic product within one to three business days.";
+    contentTex4 = "Get a quote";
   } else if (pathname === "/contact") {
     contentText1 = "Be In Touch With Us";
     contentTex2 = " The customer’s perception is our reality.";
+    contentTex4 = "Get a quote";
   } else if (pathname === "/login9") {
     contentText1 = " More customers, more ";
     contentTex2 = "revenue, more quickly.";
+    contentTex4 = "Get a quote";
   } else if (pathname === "/") {
     contentText1 = " Marto Shipping ";
     contentTex3 = "International Service";
+    contentTex4 = "Get a quote";
     contentTex2 =
       "Put in your Track I.D and start Tracking your Package Instantly.";
   } else if (pathname && pathname.startsWith("/ourwork")) {
@@ -62,11 +67,13 @@ export default function RootLayout({
     contentTex3 = "International Service";
     contentTex2 =
       "We Offer International express deliveries; global freight forwarding by air, sea, road and rail;";
+    contentTex4 = "Get a quote";
   } else if (pathname && pathname.startsWith("/services")) {
     contentText1 = "Marto Shipping ";
     contentTex3 = "International Service";
     contentTex2 =
       "Service to others is the rent you pay for your room here on earth.";
+    contentTex4 = "Get a quote";
   } else if (pathname && pathname.startsWith("/signup9")) {
     contentText1 = " Create the growth";
     contentTex2 = "your company is";
@@ -142,6 +149,7 @@ export default function RootLayout({
                     text={contentText1}
                     text2={contentTex2}
                     text3={contentTex3}
+                    text4={contentTex4}
                     pathname={pathname}
                   />
                 )}
