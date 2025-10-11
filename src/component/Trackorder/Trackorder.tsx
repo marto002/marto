@@ -14,15 +14,17 @@ const userr: Userr | null = {
 };
 
 interface Parcel {
-  from: string;
-  to: string;
   weight: number;
   length: number;
   width: number;
   height: number;
-  isResidential: boolean;
-  deliveryDate: number;
-  comment: string;
+  Sendernumber: string;
+  Receivername: string;
+  Address: string;
+  Sendername: string;
+  Senderaddress: string;
+  Content: string;
+  Deliverydate: string;
 }
 
 interface User {
@@ -43,11 +45,6 @@ export default function Trackorder() {
       setTrackingId(data.trackingId);
     };
     fetchId();
-  }, []);
-
-  useEffect(() => {
-    const id = "TRK-" + uuidv4().slice(0, 8).toUpperCase();
-    setTrackingId(id);
   }, []);
 
   const [user, setUser] = useState<any[]>([]);
@@ -81,16 +78,6 @@ export default function Trackorder() {
   }, []);
 
   const visibleStatuses = ["Packed", "Placed", "Delivered", "Shipped"];
-  /*  const [users, setUsers] = useState<User[]>([]);
-
-  useEffect(() => {
-    const fetchUsers = async () => {
-      const res = await fetch("/api/admin/get-users");
-      const data = await res.json();
-      setUsers(data);
-    };
-    fetchUsers();
-  }, []);*/
 
   const [userData, setUserData] = useState<User | null>(null);
   const [loading, setLoading] = useState(true);
@@ -127,7 +114,7 @@ export default function Trackorder() {
           {/* Tabs */}
 
           <div className="flex flex-wrap gap-4 border-b  border-gray-200 mb-6  md:flex-col flex-row ">
-            {["Trackorder", "Security"].map((tab) => (
+            {["Trackorder"].map((tab) => (
               <button
                 key={tab}
                 onClick={() => setActiveTab(tab)}
@@ -163,68 +150,86 @@ export default function Trackorder() {
 
                         <p className="text-xl text-[#33accc]">
                           <span className="text-white font-medium">
-                            Your Tracking order is : {userData.trackingId .slice(0, 13)}
+                            Your Tracking order is : {userData.trackingId}
                           </span>
                         </p>
 
                         {userData.parcels && userData.parcels.length > 0 ? (
-                          <div className="overflow-x-auto ">
-                          <table className="min-w-full  border border-gray-300 text-sm text-left">
-                            <thead className="bg-gray-100">
-                              <tr>
-                                <th className="border px-4 py-2">#</th>
-                                <th className="border px-4 py-2">From</th>
-                                <th className="border px-4 py-2">To</th>
-                                <th className="border px-4 py-2">
-                                  Weight (kg)
-                                </th>
-                                <th className="border px-4 py-2">
-                                  Height (kg)
-                                </th>
-                                <th className="border px-4 py-2">
-                                  Length (kg)
-                                </th>
-                                <th className="border px-4 py-2">Width (kg)</th>
-                                <th className="border px-4 py-2">Comment</th>
-                                <th className="border px-4 py-2">
-                                  deliveryDate
-                                </th>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              {userData.parcels.map((parcel, index) => (
-                                <tr key={index} className="hover:bg-gray-50">
-                                  <td className="border px-4 py-2">
-                                    {index + 1}
-                                  </td>
-                                  <td className="border px-4 py-2">
-                                    {parcel.from}
-                                  </td>
-                                  <td className="border px-4 py-2">
-                                    {parcel.to}
-                                  </td>
-                                  <td className="border px-4 py-2">
-                                    {parcel.weight}(kg)
-                                  </td>
-                                  <td className="border px-4 py-2">
-                                    {parcel.height}(kg)
-                                  </td>
-                                  <td className="border px-4 py-2">
-                                    {parcel.length}(kg)
-                                  </td>
-                                  <td className="border px-4 py-2">
-                                    {parcel.width}(kg)
-                                  </td>
-                                  <td className="border px-4 py-2">
-                                    {parcel.comment}
-                                  </td>
-                                  <td className="border px-4 py-2">
-                                    {parcel.deliveryDate}
-                                  </td>
+                          <div className="md:overflow-auto overflow-x-auto ">
+                            <table className="min-w-full  border border-gray-300 text-sm text-left">
+                              <thead className="bg-gray-100">
+                                <tr>
+                                  <th className="border px-4 py-2">#</th>
+                                  <th className="border px-4 py-2">Address</th>
+                                  <th className="border px-4 py-2">Content</th>
+                                  <th className="border px-4 py-2">
+                                    Weight (kg)
+                                  </th>
+                                  <th className="border px-4 py-2">
+                                    Height (kg)
+                                  </th>
+                                  <th className="border px-4 py-2">
+                                    Length (kg)
+                                  </th>
+                                  <th className="border px-4 py-2">
+                                    Width (kg)
+                                  </th>
+                                  <th className="border px-4 py-2">
+                                    Receivername
+                                  </th>
+                                  <th className="border px-4 py-2">
+                                    Senderaddress
+                                  </th>
+
+                                  <th className="border px-4 py-2">
+                                    Sendername
+                                  </th>
+                                  <th className="border px-4 py-2">
+                                    deliveryDate
+                                  </th>
                                 </tr>
-                              ))}
-                            </tbody>
-                          </table>
+                              </thead>
+                              <tbody>
+                                {userData.parcels.map((parcel, index) => (
+                                  <tr key={index} className="hover:bg-gray-50">
+                                    <td className="border px-4 py-2">
+                                      {index + 1}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                      {parcel.Address}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                      {parcel.Content}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                      {parcel.weight}(kg)
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                      {parcel.height}(kg)
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                      {parcel.length}(kg)
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                      {parcel.width}(kg)
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                      {parcel.Receivername}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                      {parcel.Senderaddress}
+                                    </td>
+
+                                    <td className="border px-4 py-2">
+                                      {parcel.Sendername}
+                                    </td>
+                                    <td className="border px-4 py-2">
+                                      {parcel.Deliverydate}
+                                    </td>
+                                  </tr>
+                                ))}
+                              </tbody>
+                            </table>
                           </div>
                         ) : (
                           <p>No parcels found</p>
@@ -235,15 +240,12 @@ export default function Trackorder() {
                     )}
                   </div>
 
-
-
-
-                  <div className="mt-6">
-                    {visibleStatuses.includes(status || "") && (
+                  <div className="mt-6 ">
+                    {visibleStatuses.includes(status || "") ? (
                       <div className="flex flex-col items-center justify-between mb-4">
                         {[
                           "Order Placed",
-                          "Pending Confirmation",
+                          "Shipped",
                           "Available for pickup",
                           "Delivered",
                         ].map((step, index) => {
@@ -282,7 +284,7 @@ export default function Trackorder() {
                                 <div
                                   className={`h-12 w-1 ${
                                     index < currentStepIndex
-                                      ? "bg-[#33accc] "
+                                      ? "bg-[#33accc]"
                                       : "bg-gray-300"
                                   }`}
                                 ></div>
@@ -290,6 +292,13 @@ export default function Trackorder() {
                             </div>
                           );
                         })}
+                      </div>
+                    ) : (
+                      <div className="flex flex-col items-center justify-center mt-4">
+                        <div className="loading-spinner border-4 border-t-[#33accc] border-gray-300 rounded-full w-8 h-8 animate-spin"></div>
+                        <p className="mt-3 text-black text-xl font-medium">
+                          Processing your order...
+                        </p>
                       </div>
                     )}
                   </div>

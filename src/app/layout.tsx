@@ -11,6 +11,8 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import { useEffect, useRef, useState } from "react";
 import Footer from "@/component/Footer/Footer";
+
+import "react-phone-input-2/lib/style.css";
 import { exo2 } from "./fonts";
 import { getUserSession } from "@/utils/getUserSession";
 

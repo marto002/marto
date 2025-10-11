@@ -1,30 +1,32 @@
 "use client";
 import { useEffect, useState } from "react";
 interface Parcel {
-  from: string;
-  to: string;
   weight: number;
   length: number;
   width: number;
   height: number;
-  deliveryDate:number;
-  comment:string;
-  isResidential: boolean;
+  Sendernumber: string;
+  Receivername: string;
+  Address: string;
+  Sendername: string;
+  Senderaddress: string;
+  Content: string;
+  Deliverydate: string;
 }
 interface User {
   _id: string;
   email: string;
   trackingId: string;
-  role:string;
-  status:string;
+  role: string;
+  status: string;
   parcels?: Parcel[];
-  createdAt:number;
+  createdAt: number;
 }
 export default function Admin() {
   const [activeTab, setActiveTab] = useState("USERS");
 
   //const [users, setUsers] = useState<any[]>([]);
- const [users, setUsers] = useState<User[]>([]);
+  const [users, setUsers] = useState<User[]>([]);
 
   useEffect(() => {
     fetch("/api/admin/users")
@@ -48,7 +50,7 @@ export default function Admin() {
         setUsers((prev) =>
           prev.map((u) => (u._id === userId ? { ...u, status: newStatus } : u))
         );
-        setSelectedStatus(newStatus); // 
+        setSelectedStatus(newStatus); //
         localStorage.setItem(`status-${userId}`, newStatus);
       }
     } catch (error) {
@@ -98,7 +100,7 @@ export default function Admin() {
                       <th className="px-4 py-2 border">Role</th>
                       <th className="px-4 py-2 border">Tracking Numbers</th>
                       <th className="px-4 py-2 border">SHOW TRACKING</th>
-                       <th className="border p-2">Parcels</th>
+                      <th className="border p-2">Parcels</th>
                       <th className="px-4 py-2 border">Signup Date</th>
                     </tr>
                   </thead>
@@ -118,7 +120,7 @@ export default function Admin() {
                           )}
                         </td>
 
-                        <td className="px-4 py-2 border">
+                        <td className="px-4 py-2 border ">
                           {showSelectFor === user._id ? (
                             <select
                               value={user.status || "None"}
@@ -157,19 +159,30 @@ export default function Admin() {
                             </button>
                           )}
                         </td>
- <td className="border p-2">
-                {user.parcels && user.parcels.length > 0 ? (
-                  <ul className="list-disc pl-4">
-                    {user.parcels.map((parcel, idx) => (
-                      <li key={idx}>
-                        From: {parcel.from} <br/>→ To: {parcel.to}<br/> → weight: ({parcel.weight}kg)<br/> → width: ({parcel.width}kg) <br/>→ length:({parcel.length}kg)<br/>→ height:({parcel.height}kg) <br/>→ deliveryDate:({parcel.deliveryDate}) <br/>→ comment:({parcel.comment})
-                      </li>
-                    ))}
-                  </ul>
-                ) : (
-                  <span>No parcels yet</span>
-                )}
-              </td>
+                        <td className="border p-2">
+                          {user.parcels && user.parcels.length > 0 ? (
+                            <ul className="list-disc pl-4">
+                              {user.parcels.map((parcel, idx) => (
+                                <li key={idx}>
+                                  Address: {parcel.Address} 
+                                  <br />→ Content: {parcel.Content}
+                                  <br /> → Receivername: {parcel.Receivername}
+                                  <br /> → Senderaddress: {parcel.Senderaddress}
+                                  <br /> → Sendername: {parcel.Sendername}
+                                  <br /> → Sendernumber: {parcel.Sendernumber}
+                                  <br /> → Content: {parcel.Content}
+                                  <br /> → weight: ({parcel.weight}kg)
+                                  <br /> → width: ({parcel.width}kg) 
+                                  <br /> →length:({parcel.length}kg)
+                                  <br /> → height:({parcel.height}kg) 
+                                  <br /> → deliveryDate:({parcel.Deliverydate}) <br />
+                                </li>
+                              ))}
+                            </ul>
+                          ) : (
+                            <span>No parcels yet</span>
+                          )}
+                        </td>
                         <td className="px-4 py-2 border">
                           {new Date(user.createdAt).toLocaleDateString()}
                         </td>

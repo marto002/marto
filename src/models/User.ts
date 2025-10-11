@@ -5,15 +5,20 @@ import { v4 as uuidv4 } from "uuid";
 
 
 export interface ParcelInfo {
-  from: string;
-  to: string;
-  weight: number;
+ 
+ 
+weight: number;
   length: number;
   width: number;
   height: number;
-  deliveryDate:number;
-  comment:string;
-  isResidential: boolean;
+  Sendernumber:string;
+  Receivername:string;
+  Address:string;
+  Sendername:string;
+  Senderaddress:string;
+  Content:string;
+  Deliverydate: string;
+
 }
 
 export interface IUser extends Document {
@@ -26,15 +31,18 @@ export interface IUser extends Document {
 }
 
 const ParcelSchema = new Schema<ParcelInfo>({
-  from: String,
-  to: String,
+  
   weight: Number,
   length: Number,
   width: Number,
   height: Number,
-  deliveryDate:String,
-  comment:String,
-  isResidential: Boolean,
+  Deliverydate:String,
+  Content:String,
+  Sendernumber:Number,
+  Receivername:String,
+  Address:String,
+  Sendername:String,
+  Senderaddress:String,
 
 });
 

@@ -1,13 +1,19 @@
 import { create } from "zustand";
 
 interface ParcelInfo {
-  from: string;
-  to: string;
+  
+
   weight: number;
   length: number;
   width: number;
   height: number;
-  isResidential: boolean;
+  Sendernumber:string;
+  Receivername:string;
+  Address:string;
+  Sendername:string;
+  Senderaddress:string;
+  Content:string;
+  Deliverydate: string;
 }
 
 interface QuoteState {

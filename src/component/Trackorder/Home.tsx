@@ -1,45 +1,63 @@
 "use client";
 
-import { useForm } from "react-hook-form";
+import { Controller, useForm } from "react-hook-form";
 import { useQuoteStore } from "./useTrackorder";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import { useAuthStoree } from "../Ustestore";
+import PhoneInput from "react-phone-input-2";
+import { useEffect, useState } from "react";
 
 interface FormValues {
-  from: string;
-  to: string;
   weight: number;
   length: number;
   width: number;
   height: number;
-  isResidential: boolean;
-  deliveryDate: string;
-  comment: string;
+  Sendernumber: string;
+  Receivername: string;
+  Address: string;
+  Sendername: string;
+  Senderaddress: string;
+  Content: string;
+  Deliverydate: string;
+  
 }
 
 export default function Home() {
   const router = useRouter();
 
-  // const { isLoggedIn } = useAuthStore();
   const { isLoggedIn, currentUser } = useAuthStoree.getState();
+
+  const [defaultCountry, setDefaultCountry] = useState("us");
+
+useEffect(() => {
+  fetch("https://ipapi.co/json/")
+    .then((res) => res.json())
+    .then((data) => setDefaultCountry(data.country_code.toLowerCase()));
+}, []);
+
+
 
   const {
     register,
+    control,
     handleSubmit,
     reset,
     formState: { errors },
   } = useForm<FormValues>({
     defaultValues: {
-      from: "",
-      to: "",
       weight: 0,
       length: 0,
       width: 0,
       height: 0,
-      isResidential: false,
-      deliveryDate: "",
-      comment: "",
+      Sendernumber: "",
+   
+      Receivername: "",
+      Address: "",
+      Sendername: "",
+      Senderaddress: "",
+      Deliverydate: "",
+      Content: "",
     },
   });
 
@@ -93,68 +111,201 @@ export default function Home() {
         </p>
 
         {/* FROM + TO */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
-          <div>
-            <label className="block text-sm font-semibold mb-1 text-white">
-              From*
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6 ">
+         
+            
+           
+              <div>
+                {" "}
+                <label className="block text-sm font-semibold mb-1 text-white">
+                  Sender Address*
+                </label>
+                <input
+                  {...register("Senderaddress", {
+                    required: "Please enter a starting location.",
+                  })}
+                  placeholder="5672 Stoneridge Dr Suite 100,Pleasanton, CA 94588"
+                  className={`border rounded-md p-2 w-full  text-white ${
+                    errors.Senderaddress
+                      ? "border-white focus:ring-red-400"
+                      : "border-white "
+                  }`}
+                />
+                {errors.Senderaddress && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.Senderaddress.message}
+                  </p>
+                )}
+              </div>
+              <div>
+                {" "}
+                <label className="block text-sm font-semibold mb-1 text-white">
+                  Address*
+                </label>
+                <input
+                  {...register("Address", {
+                    required: "Please enter a starting location.",
+                  })}
+                  placeholder="11131 ViOLETA StREET VENTURA CA 93004"
+                  className={`border rounded-md p-2 w-full  text-white ${
+                    errors.Address
+                      ? "border-white focus:ring-red-400"
+                      : "border-white "
+                  }`}
+                />
+                {errors.Address && (
+                  <p className="text-red-500 text-sm mt-1">
+                    {errors.Address.message}
+                  </p>
+                )}{" "}
+              </div>
+            
+
+            
+<div> <label className="block text-sm font-semibold mb-1 text-white">
+              Sender name*
             </label>
             <input
-              {...register("from", {
+              {...register("Sendername", {
                 required: "Please enter a starting location.",
               })}
-              placeholder="Lagos, Nigeria"
+              placeholder="Laborers trustfunds"
+             
+
+               className={`border rounded-md p-2 w-full  text-white ${
+              errors.Sendername
+                ? "border-white focus:ring-red-400"
+                : "border-white "
+            }`}
+            />
+            {errors.Sendername && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.Sendername.message}
+              </p>
+            )}</div>
+<div> <label className="block text-sm font-semibold mb-1 text-white">
+              Receiver name*
+            </label>
+            <input
+              {...register("Receivername", {
+                required: "Please enter a starting location.",
+              })}
+              placeholder="Patricia Hairston"
               className={`border rounded-md p-2 w-full  text-white ${
-                errors.from
+                errors.Receivername
+                  ? "border-white focus:ring-red-400"
+                  : "border-white "
+              }`}
+            />{" "}
+            {errors.Receivername && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.Receivername.message}
+              </p>
+            )}</div>       
+                  
+
+
+            <div ><label className="block text-sm font-semibold mb-1 text-white">
+              Content*
+            </label>
+            <input
+              {...register("Content", {
+                required: "Please enter a starting location.",
+              })}
+              placeholder=" Trustfund Authorize License Claiming  Key"
+              className={`border rounded-md p-2 w-full  text-white ${
+                errors.Content
                   ? "border-white focus:ring-red-400"
                   : "border-white "
               }`}
             />
-            {errors.from && (
-              <p className="text-red-500 text-sm mt-1">{errors.from.message}</p>
-            )}
-          </div>
-
-          <div>
+            {errors.Content && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.Content.message}
+              </p>
+            )}</div>
+            <div>
             <label className="block text-sm font-semibold mb-1 text-white">
-              To*
+              Sender number*
             </label>
-            <input
-              {...register("to", { required: "Please enter a destination." })}
-              placeholder="Abuja, Nigeria"
-              className={`border rounded-md p-2 w-full text-white ${
-                errors.to ? "border-white focus:ring-red-400" : "border-white "
-              }`}
+             <Controller
+        name="Sendernumber"
+        control={control}
+         
+        rules={{ required: "Phone number is required",
+          
+                pattern: {
+                  value: /^[0-9]+$/,
+                  message: "Phone number must contain only digits",
+                },
+                minLength: {
+                  value: 10,
+                  message: "Phone number must be at least 10 digits",
+                },
+                maxLength: {
+                  value: 15,
+                  message: "Phone number cannot exceed 15 digits",
+                },
+             
+         }}
+        
+        render={({ field: { onChange, value } }) => (
+            <PhoneInput
+             
+             onChange={(phone) => onChange(phone)}
+            country={defaultCountry}
+            enableSearch={true}
+            inputStyle={{
+              width: "100%",
+              borderRadius: "8px",
+              padding: "12px 48px 12px 58px",
+              border: "1px solid #ccc",
+              
+              color: "#000",
+            }}
+            buttonStyle={{
+              border: "none",
+              
+            }}
+            dropdownStyle={{
+              background: "red",
+              color: "#fff",
+            }}
+
+             
+             
             />
-            {errors.to && (
-              <p className="text-red-500 text-sm mt-1">{errors.to.message}</p>
+             )}/>
+
+
+            
+            {errors.Sendernumber && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.Sendernumber.message}
+              </p>
             )}
           </div>
+          
+
+        
         </div>
+
         <div className="mb-6">
           <label className="block text-sm font-semibold mb-1 text-white">
             Delivery Date*
           </label>
           <input
             type="date"
-            {...register("deliveryDate", { required: true })}
+            {...register("Deliverydate", { required: true })}
+            placeholder="06-06-2024"
             className="border border-white rounded-md p-2 w-full text-white"
           />
-          {errors.deliveryDate && (
+          {errors.Deliverydate && (
             <p className="text-red-500 text-sm mt-1">Date is required</p>
           )}
         </div>
 
         {/* CHECKBOX */}
-        <label className="flex items-center gap-2 mb-6">
-          <input
-            type="checkbox"
-            {...register("isResidential")}
-            className="w-5 h-5 text-yellow-500 rounded focus:ring-yellow-500"
-          />
-          <span className="text-white text-sm">
-            This is a residential address.
-          </span>
-        </label>
 
         <h3 className="text-white font-semibold mb-4">Parcel Information</h3>
 
@@ -252,22 +403,7 @@ export default function Home() {
             )}
           </div>
         </div>
-        <div className=" w-full pb-10">
-          <label className="block text-sm font-semibold mb-1 text-white">
-            Comment*
-          </label>
-          <textarea
-            {...register("comment", { required: "Comment is required" })}
-            rows={4}
-            placeholder="Write your comment here..."
-            className="border border-white text-white rounded-md p-3 w-full  resize-none"
-          />
-          {errors.comment && (
-            <p className="text-red-500 text-sm mt-1">
-              {errors.comment.message}
-            </p>
-          )}
-        </div>
+       
 
         {/* SUBMIT BUTTON */}
         <button
@@ -280,3 +416,93 @@ export default function Home() {
     </main>
   );
 }
+
+
+
+
+
+
+
+
+
+
+
+/*
+
+
+
+
+
+"use client";
+
+import React, { useEffect, useState } from "react";
+import { useForm, Controller } from "react-hook-form";
+import PhoneInput from "react-phone-input-2";
+
+type FormValues = {
+  phone: string;
+};
+
+
+export default function Home() {
+  
+const [defaultCountry, setDefaultCountry] = useState("us");
+
+useEffect(() => {
+  fetch("https://ipapi.co/json/")
+    .then((res) => res.json())
+    .then((data) => setDefaultCountry(data.country_code.toLowerCase()));
+}, []);
+  const { control, handleSubmit } = useForm<FormValues>({
+    defaultValues: { phone: "" },
+  });
+
+  const onSubmit = (data: FormValues) => {
+    console.log("Phone Data:", data);
+  };
+
+  return (
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      className="flex flex-col gap-4 max-w-sm mx-auto mt-10"
+    >
+      <label className="text-white text-sm font-medium">Phone Number</label>
+      <Controller
+        name="phone"
+        control={control}
+        rules={{ required: "Phone number is required" }}
+        render={({ field }) => (
+          <PhoneInput
+            {...field}
+            
+            country={defaultCountry}
+            enableSearch={true}
+            inputStyle={{
+              width: "100%",
+              borderRadius: "8px",
+              padding: "12px 48px 12px 58px",
+              border: "1px solid #ccc",
+              background: "#1a1a1a",
+              color: "#fff",
+            }}
+            buttonStyle={{
+              border: "none",
+              background: "#1a1a1a",
+            }}
+            dropdownStyle={{
+              background: "#1a1a1a",
+              color: "#fff",
+            }}
+          />
+        )}
+      />
+
+      <button
+        type="submit"
+        className="bg-blue-600 text-white px-4 py-2 rounded-md hover:bg-blue-500"
+      >
+        Submit
+      </button>
+    </form>
+  );
+}*/
